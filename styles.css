@@ -1,0 +1,117 @@
+.block.block_course_navigation .content {
+  white-space: normal;
+  padding: 5px 0;
+}
+.block.block_course_navigation ul.activities {
+  margin: 0;
+  list-style: none;
+}
+.block.block_course_navigation .section {
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  border: 1px solid transparent;
+  border-radius: 0px;
+}
+.block.block_course_navigation .section-body {
+  padding: 15px;
+}
+.block.block_course_navigation .section-heading {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-right-radius: -1px;
+  border-top-left-radius: -1px;
+}
+.block.block_course_navigation .section-heading > .dropdown .dropdown-toggle {
+  color: inherit;
+}
+.block.block_course_navigation .section-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: inherit;
+}
+.block.block_course_navigation .section-title > a,
+.block.block_course_navigation .section-title > small,
+.block.block_course_navigation .section-title > .small,
+.block.block_course_navigation .section-title > small > a,
+.block.block_course_navigation .section-title > .small > a {
+  color: inherit;
+}
+.block.block_course_navigation .section-footer {
+  padding: 10px 15px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #dddddd;
+  border-bottom-right-radius: -1px;
+  border-bottom-left-radius: -1px;
+}
+.block.block_course_navigation .section > .list-group,
+.block.block_course_navigation .section > .section-collapse > .list-group {
+  margin-bottom: 0;
+}
+.block.block_course_navigation .section > .list-group .list-group-item,
+.block.block_course_navigation .section > .section-collapse > .list-group .list-group-item {
+  border-width: 1px 0;
+  border-radius: 0;
+}
+.block.block_course_navigation .section > .list-group:first-child .list-group-item:first-child,
+.block.block_course_navigation .section > .section-collapse > .list-group:first-child .list-group-item:first-child {
+  border-top: 0;
+  border-top-right-radius: -1px;
+  border-top-left-radius: -1px;
+}
+.block.block_course_navigation .section > .list-group:last-child .list-group-item:last-child,
+.block.block_course_navigation .section > .section-collapse > .list-group:last-child .list-group-item:last-child {
+  border-bottom: 0;
+  border-bottom-right-radius: -1px;
+  border-bottom-left-radius: -1px;
+}
+.block.block_course_navigation .section > .section-heading + .section-collapse > .list-group .list-group-item:first-child {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+.block.block_course_navigation .section-heading + .list-group .list-group-item:first-child {
+  border-top-width: 0;
+}
+.block.block_course_navigation .list-group + .section-footer {
+  border-top-width: 0;
+}
+.block.block_course_navigation .section-group {
+  margin-bottom: 20px;
+}
+.block.block_course_navigation .section-group .section {
+  margin-bottom: 0;
+  border-radius: 0px;
+}
+.block.block_course_navigation .section-group .section + .section {
+  margin-top: 5px;
+}
+.block.block_course_navigation .section-group .section-heading {
+  border-bottom: 0;
+}
+.block.block_course_navigation .section-group .section-heading + .section-collapse > .section-body,
+.block.block_course_navigation .section-group .section-heading + .section-collapse > .list-group {
+  border-top: 1px solid #dddddd;
+}
+.block.block_course_navigation .section-group .section-footer {
+  border-top: 0;
+}
+.block.block_course_navigation .section-group .section-footer + .section-collapse .section-body {
+  border-bottom: 1px solid #dddddd;
+}
+.block.block_course_navigation .section-default {
+  border-color: #dddddd;
+}
+.block.block_course_navigation .section-default > .section-heading {
+  color: #333333;
+  background-color: #f5f5f5;
+  border-color: #dddddd;
+}
+.block.block_course_navigation .section-default > .section-heading + .section-collapse > .section-body {
+  border-top-color: #dddddd;
+}
+.block.block_course_navigation .section-default > .section-heading .badge {
+  color: #f5f5f5;
+  background-color: #333333;
+}
+.block.block_course_navigation .section-default > .section-footer + .section-collapse > .section-body {
+  border-bottom-color: #dddddd;
+}

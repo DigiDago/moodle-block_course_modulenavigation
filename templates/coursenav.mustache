@@ -1,0 +1,24 @@
+
+
+<div class="section-group" id="accordion" role="tablist" aria-multiselectable="true">
+  {{#sections}}
+  <div class="section section-default">
+    <div class="section-heading" role="tab" id="heading{{number}}">
+      <div class="section-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{number}}" aria-expanded="true" aria-controls="collapse{{number}}">
+          {{title}}
+        </a>
+      </div>
+    </div>
+    <div id="collapse{{number}}" class="section-collapse collapse {{#selected}}in{{/selected}}" role="tabsection" aria-labelledby="heading{{number}}">
+      <div class="section-body">
+       <ul class="activities">
+        {{#modules}}
+            <li><a href="{{{url}}}">{{name}}</a>
+        {{/modules}}
+        </ul>
+      </div>
+    </div>
+  </div>
+  {{/sections}}
+</div>
