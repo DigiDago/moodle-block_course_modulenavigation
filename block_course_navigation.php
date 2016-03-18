@@ -75,7 +75,7 @@ class block_course_navigation extends block_base {
      * @return stdClass block content info
      */
     public function get_content() {
-
+        global $DB;
         if (!is_null($this->content)) {
             return $this->content;
         }
@@ -120,6 +120,30 @@ class block_course_navigation extends block_base {
 
         $template = new stdClass();
 
+        $completioninfo = new completion_info($course);
+
+        if ($completioninfo->is_enabled()) {
+            $template->completionon = 'completion';
+        }
+
+        $completionok = array(COMPLETION_COMPLETE, COMPLETION_COMPLETE_PASS);
+        $completionfail = array(COMPLETION_COMPLETE_FAIL, COMPLETION_INCOMPLETE);
+
+        $thiscontext = context::instance_by_id($this->page->context->id);
+        $thisurl = ($this->page->url);
+
+        $inactivity = false;
+        if ($thiscontext->get_level_name() == get_string('activitymodule')) {
+            //Uh-oh we are in a activity. Better find some more info about this activity
+            $inactivity = true;
+            if ($cm = $DB->get_record_sql("SELECT cm.*, md.name AS modname
+                                           FROM {course_modules} cm
+                                           JOIN {modules} md ON md.id = cm.module
+                                           WHERE cm.id = ?", array($thiscontext->instanceid))) {
+                $myactivityid = $cm->id;
+            }
+        }
+
         foreach ($sections as $section) {
             $i = $section->section;
             if ($i > $course->numsections) {
@@ -152,26 +176,44 @@ class block_course_navigation extends block_base {
             $thissection->url = $format->get_view_url($section);
             $thissection->selected = false;
 
-            if ($i == $selected) {
+            if ($i == $selected && !$inactivity) {
                 $thissection->selected = true;
             }
 
             $thissection->modules = array();
             if (!empty($modinfo->sections[$i])) {
                 foreach ($modinfo->sections[$i] as $modnumber) {
-                    $thissection->modules[] = $modinfo->cms[$modnumber];
+                    $module = $modinfo->cms[$modnumber];
+
+                    $thismod = new stdClass();
+                    
+                    if ($inactivity) {
+                        if ($myactivityid == $module->id) {
+                            $thissection->selected = true;
+                            $thismod->active = 'active';
+                        }
+                    }
+
+                    $thismod->name = $module->name;
+                    $thismod->url = $module->url;
+                    $hascompletion = $completioninfo->is_enabled($module);
+                    if ($hascompletion) {
+                        $thismod->completeclass = 'incomplete';
+                    }
+
+                    $completiondata = $completioninfo->get_data($module, true);
+                    if (in_array($completiondata->completionstate, $completionok)) {
+                        $thismod->completeclass = 'completed';
+                    }
+                    $thissection->modules[] = $thismod;
                 }
+                $template->sections[] = $thissection;
             }
-            $template->sections[] = $thissection;
+            
         }
 
-
-        
         $renderer = $this->page->get_renderer('block_course_navigation', 'nav');
         $this->content->text = $renderer->render_nav($template);
-
-        //$this->content->text = '<pre>' . print_r($template, true) . '</pre>';
-
         return $this->content;
     }
 

@@ -1,5 +1,5 @@
 @section-bg:                    #fff;
-@section-body-padding:          15px;
+@section-body-padding:          0px;
 @section-heading-padding:       10px 15px;
 @section-footer-padding:        @section-heading-padding;
 @section-border-radius:         0px;
@@ -34,12 +34,49 @@
 .block.block_course_navigation {
     .content {
         white-space: normal;
-        padding: 5px 0;
+        padding: 5px;
+        background-color: #FFF;
     }
 
     ul.activities {
         margin: 0;
         list-style: none;
+        li > a {
+            padding: 5px 10px;
+            border-bottom: 1px solid #eee;
+            display: block;
+            &:hover,
+            &.active {
+                text-decoration: none;
+                background-color: #eee;
+            }
+        }
+        .completionbox {
+            position: relative;
+            display: table-cell;
+            width: 18px;
+        }
+        .activityname {
+            display: table-cell;
+        }
+        .completioncheck {
+            position: absolute;
+            top: 50%;
+            margin-top: -5px;
+            content: '';
+            width: 10px;
+            height: 10px;
+            
+            border-radius: 5px;
+            display: inline-block;
+            &.incomplete {
+                border: 1px solid #ccc;
+            }
+            &.completed {
+                border: 1px solid #5cb85c;
+                background-color: #5cb85c;
+            }
+        }
     }
 
     // Base class

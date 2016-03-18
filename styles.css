@@ -1,10 +1,46 @@
 .block.block_course_navigation .content {
   white-space: normal;
-  padding: 5px 0;
+  padding: 5px;
+  background-color: #FFF;
 }
 .block.block_course_navigation ul.activities {
   margin: 0;
   list-style: none;
+}
+.block.block_course_navigation ul.activities li > a {
+  padding: 5px 10px;
+  border-bottom: 1px solid #eee;
+  display: block;
+}
+.block.block_course_navigation ul.activities li > a:hover,
+.block.block_course_navigation ul.activities li > a.active {
+  text-decoration: none;
+  background-color: #eee;
+}
+.block.block_course_navigation ul.activities .completionbox {
+  position: relative;
+  display: table-cell;
+  width: 18px;
+}
+.block.block_course_navigation ul.activities .activityname {
+  display: table-cell;
+}
+.block.block_course_navigation ul.activities .completioncheck {
+  position: absolute;
+  top: 50%;
+  margin-top: -5px;
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+.block.block_course_navigation ul.activities .completioncheck.incomplete {
+  border: 1px solid #ccc;
+}
+.block.block_course_navigation ul.activities .completioncheck.completed {
+  border: 1px solid #5cb85c;
+  background-color: #5cb85c;
 }
 .block.block_course_navigation .section {
   margin-bottom: 20px;
@@ -13,7 +49,7 @@
   border-radius: 0px;
 }
 .block.block_course_navigation .section-body {
-  padding: 15px;
+  padding: 0px;
 }
 .block.block_course_navigation .section-heading {
   padding: 10px 15px;
