@@ -38,6 +38,38 @@
         background-color: #FFF;
     }
 
+    .pagination {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        .prev,
+        .next {
+            width: 10%;
+            a {
+                background-color: #FFF;
+
+            }
+        }
+        .sectionname {
+            width: 80%;
+            border-radius: 0;
+            border: 0;
+        }
+        display: table;
+        &>li {
+            display: table-cell;
+            a {
+                padding: @section-heading-padding;
+                float: none;
+                display: block;
+                background-color: transparent;
+                border-radius: 0;
+                border: 0;
+            }
+        }
+
+    }
+
     ul.activities {
         margin: 0;
         list-style: none;
@@ -102,6 +134,16 @@
         > .dropdown .dropdown-toggle {
             color: inherit;
         }
+    }
+    .tocourse {
+        display: block;
+        padding: @section-heading-padding;
+        background-color: @section-default-heading-bg;
+        border: 1px solid @section-default-border;
+        margin-bottom: 3px;
+    }
+    .onesection .section-heading {
+        padding: 0;
     }
 
     // Within heading, strip any `h*` tag of its default margins for spacing.

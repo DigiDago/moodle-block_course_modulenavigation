@@ -16,15 +16,20 @@
 
 /**
  * @package    block_course_navigation
- * @copyright  2016 Bas Brands <bas@sonsbeekmedia.nl>
+ * @copyright  2016 Digidago.
+* @author     Bas Brands
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 class block_course_navigation_nav_renderer extends plugin_renderer_base {
 
     public function render_nav($template) {
-        //print_r($template);
-        return $this->render_from_template('block_course_navigation/coursenav', $template);
+        if (isset($template->config->onesection) && ($template->config->onesection == 1)) {
+            return $this->render_from_template('block_course_navigation/coursenav_onesection', $template);
+        } else {
+            return $this->render_from_template('block_course_navigation/coursenav', $template);
+        }
+        
     }
 
 }

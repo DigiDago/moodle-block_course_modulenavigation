@@ -40,11 +40,12 @@ class block_course_navigation_edit_form extends block_edit_form {
         $mform->addElement('text', 'config_blocktitle', get_string('config_blocktitle', 'block_course_navigation'));
         $mform->setDefault('config_blocktitle', '');
         $mform->setType('config_blocktitle', PARAM_MULTILANG);
+
         $mform->addHelpButton('config_blocktitle', 'config_blocktitle', 'block_course_navigation');
 
-        $mform->addElement('advcheckbox', 'config_enumerate', get_string('config_enumerate', 'block_course_navigation'),
-            get_string('config_enumerate_label', 'block_course_navigation'));
-        $mform->setDefault('config_enumerate', 1);
-        $mform->setType('config_enumerate', PARAM_BOOL);
+        $mform->addElement('advcheckbox', 'config_onesection', get_string('config_onesection', 'block_course_navigation'),
+            get_string('config_onesection_label', 'block_course_navigation'));
+        $mform->setDefault('config_onesection', 1);
+        $mform->setType('config_onesection', PARAM_BOOL);
     }
 }

@@ -16,7 +16,7 @@
 
 /**
  * @package    block_course_navigation
- * @copyright  2016 Bas Brands <bas@sonsbeekmedia.nl>
+ * @copyright  2016 Digidago.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -81,6 +81,7 @@ class block_course_navigation extends block_base {
         }
 
         $selected = optional_param('section', null, PARAM_INT);
+        $intab = optional_param('dtab', null, PARAM_TEXT);
 
         $this->content = new stdClass();
         $this->content->footer = '';
@@ -100,7 +101,12 @@ class block_course_navigation extends block_base {
             return $this->content;
         }
 
-        $sections = $format->get_sections();
+        
+        if ($format instanceof format_dynamictabs) {
+            $sections = $format->tabs_get_sections();
+        } else {
+            $sections = $format->get_sections();
+        }
 
         if (empty($sections)) {
             return $this->content;
@@ -111,12 +117,9 @@ class block_course_navigation extends block_base {
         $text = html_writer::start_tag('ul', array('class' => 'section-list'));
 
         if ($format instanceof format_dynamictabs) {
-            $text .= 'working with dynamic tabs';
-            //$text .= print_r($format->get_tabs(), true);
             $course = $format->get_course();
-            $modinfo = get_fast_modinfo($course);
-        
         }
+        $modinfo = get_fast_modinfo($course);
 
         $template = new stdClass();
 
@@ -144,6 +147,22 @@ class block_course_navigation extends block_base {
             }
         }
 
+        $template->inactivity = $inactivity;
+
+        if (count($sections) > 1) {
+            $template->hasprevnext = true;
+            $template->hasnext = true;
+            $template->hasprev = true;
+        }
+
+        $courseurl = new moodle_url('/course/view.php', array('id' => $course->id));
+        $template->courseurl = $courseurl->out();
+        $sectionnums = array();
+        foreach($sections as $section) {
+            $sectionnums[] = $section->section;
+        }
+
+
         foreach ($sections as $section) {
             $i = $section->section;
             if ($i > $course->numsections) {
@@ -155,11 +174,7 @@ class block_course_navigation extends block_base {
 
             if (!empty($section->name)) {
                 $title = format_string($section->name, true, array('context' => $context));
-                if ($format instanceof format_dynamictabs) {
-                    if (preg_match('/\{icon\}/', $title)) {
-                        continue;
-                    }
-                }
+
             } else {
                 $summary = file_rewrite_pluginfile_urls($section->summary, 'pluginfile.php', $context->id, 'course',
                     'section', $section->id);
@@ -184,7 +199,9 @@ class block_course_navigation extends block_base {
             if (!empty($modinfo->sections[$i])) {
                 foreach ($modinfo->sections[$i] as $modnumber) {
                     $module = $modinfo->cms[$modnumber];
-
+                    if ($module->modname == 'label' || $module->modname == 'url') {
+                        continue;
+                    }
                     $thismod = new stdClass();
                     
                     if ($inactivity) {
@@ -209,12 +226,63 @@ class block_course_navigation extends block_base {
                 }
                 $template->sections[] = $thissection;
             }
-            
-        }
 
+            $hascurrent = $getnext = $next = $prev = false;
+            if ($thissection->selected) {
+
+                $pn = $this->get_prev_next($sectionnums, $thissection->number);
+
+                $courseurl = new moodle_url('/course/view.php', array('id' => $course->id, 'section' => $i));
+                $template->courseurl = $courseurl->out();
+                
+                if ($pn->next === false) {
+                    $template->hasnext = false;
+                }
+                if ($pn->prev === false) {
+                    $template->hasprev = false;
+                }
+
+                $prevurl = new moodle_url('/course/view.php', array('id' => $course->id, 'section' => $pn->prev));
+                $template->prevurl = $prevurl->out(false);
+
+                $nexturl = new moodle_url('/course/view.php', array('id' => $course->id, 'section' => $pn->next));
+                $template->nexturl = $nexturl->out(false);
+            }
+        }
+        if ($intab) {
+            $template->inactivity = true;
+        }
+        $template->coursename = $course->fullname;
+        $template->config = $this->config;
         $renderer = $this->page->get_renderer('block_course_navigation', 'nav');
         $this->content->text = $renderer->render_nav($template);
         return $this->content;
+    }
+
+    /**
+     * Function to get the previous and next values in an array
+     * @param array array to search
+     * @return object $pn with prev and next values.
+     */
+    private function get_prev_next($array, $current) {
+        $pn = new stdClass();
+
+        $hascurrent = $pn->next = $pn->prev = false;
+
+        foreach($array as $a) {
+            if ($hascurrent) {
+                $pn->next = $a;
+                break;
+            }
+            if ($a == $current) {
+                $hascurrent = true;
+            } else {
+                if (!$hascurrent) {
+                    $pn->prev = $a;
+                }
+            }
+        }
+        return $pn;
     }
 
 
