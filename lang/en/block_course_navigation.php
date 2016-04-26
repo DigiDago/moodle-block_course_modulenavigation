@@ -1,6 +1,5 @@
 <?php
-
-// This file is part of Moodle - http://moodle.org/
+// This file is part of The Course Navigation Block
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -16,10 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Defines the block strings
- *
  * @package    block_course_navigation
- * @copyright  2009 David Mudrak <david@moodle.com>
+ * @copyright  2016 Digidago.
+ * @author     Bas Brands
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
