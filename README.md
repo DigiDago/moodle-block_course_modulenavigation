@@ -2,13 +2,24 @@
 
 Introduction
 ============
-A block that show the user's a summary (like a table of content) of a course with sections name and a list of all resources and activties (except label). 
+Course navigation is a block that show the users a summary (like a table of content) of a course with sections name and a list of all resources and activties (except labels).
 - Clicking at section name will display the list of resources and activities of the section
 - Clicking at resources and activites will display the page of the resource or activity.
+
+This block use automaticaly names of sections and names of resources and activities.
+If activity completion is used in the course, course navigation block display a circle empty or green to show state of completion. 
 
 This block has an option to display at choice :
 - Only the active section
 - or all the sections 
+
+
+Maintainer
+----------
+
+The block has been developed by Bas Brand and was based on an request of Digidago (Clément PRUDHOMME). It is currently maintained by DigiDago / Bas Brand.
+
+
 
 
 Required version of Moodle
@@ -50,6 +61,15 @@ Uninstallation
 Version Information
 ===================
 See Changes.md.
+
+
+Any Problems, questions, suggestions
+===================
+If you have a problem with this block, suggestions for improvement, drop an email at :
+- Clément PRUDHOMME :  contact@digidago.com
+-  Github : https://github.com/bmbrands/moodle-block_course_navigation
+
+
 
 Us
 ==
