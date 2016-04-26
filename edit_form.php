@@ -16,7 +16,7 @@
 
 /**
  * @package    block_course_navigation
- * @copyright  2016 Digidago.
+ * @copyright  2016 Digidago <contact@digidago.com>
  * @author     Bas Brands
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
