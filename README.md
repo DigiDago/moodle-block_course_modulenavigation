@@ -2,7 +2,7 @@
 
 Introduction
 ============
-Course navigation is a block that show the users a summary (like a table of content) of a course with sections name and a list of all resources and activties (except labels). 
+Course navigation is a block that show the users a summary (like a table of content) of a course with sections name and a list of all resources and activties (except labels). One objective of this block is to replace the block navigation in a way to present only the course content and sections title.
 - Clicking at section name will display the list of resources and activities of the section
 - Clicking at resources and activites will display the page of the resource or activity.
 
