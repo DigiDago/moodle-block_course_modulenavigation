@@ -8,18 +8,17 @@ Course navigation is a block that show the users a summary (like a table of cont
 
 This block use automaticaly names of sections and names of resources and activities.
 If activity completion is used in the course, course navigation block display a circle empty or green to show state of completion. 
+If you want to display Course navigation on all pages of the course, make sure to check permission of the block and display it on "every page".
 
 This block has an option to display at choice :
 - Only the active section
 - or all the sections 
 
 
+
 Maintainer
-----------
-
+============
 The block has been developed by Bas Brand and was based on an request of Digidago (Clément PRUDHOMME). It is currently maintained by DigiDago / Bas Brand.
-
-
 
 
 Required version of Moodle
@@ -29,6 +28,7 @@ next release.
 
 Please ensure that your hardware and software complies with 'Requirements' in 'Installing Moodle' on
 'docs.moodle.org/30/en/Installing_Moodle'.
+
 
 Installation
 ============
@@ -70,9 +70,13 @@ If you have a problem with this block, suggestions for improvement, drop an emai
 -  Github : https://github.com/bmbrands/moodle-block_course_navigation
 
 
+Languages and translation
+===================
+English and french versions included / versions anglaise et française incluses.
+
 
 Us
 ==
-Bas Brands
-Clément Prudhomme (@copyright 2016 Digidago)
+Bas Brands (http://sonsbeekmedia.nl/)
+Clément Prudhomme (@copyright 2016 Digidago http://digidago.com/)
 
