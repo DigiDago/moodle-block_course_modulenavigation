@@ -2,7 +2,13 @@
 
 Introduction
 ============
-A block that show the user's summary of a course : section title and ressources and activties. 
+A block that show the user's a summary (like a table of content) of a course with sections name and a list of all resources and activties (except label). 
+- Clicking at section name will display the list of resources and activities of the section
+- Clicking at resources and activites will display the page of the resource or activity.
+
+This block has an option to display at choice :
+- Only the active section
+- or all the sections 
 
 
 Required version of Moodle
