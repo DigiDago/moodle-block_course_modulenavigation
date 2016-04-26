@@ -39,8 +39,6 @@ module.exports = function(grunt) {
             decache: {
                 cmd: 'php -r "' + decachephp + '"',
                 callback: function(error, stdout, stderror) {
-                    // exec will output error messages
-                    // just add one to confirm success.
                     if (!error) {
                         grunt.log.writeln("Moodle theme cache reset.");
                     }

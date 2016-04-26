@@ -65,7 +65,6 @@ class block_course_navigation extends block_base {
      * @return navigation_node The navigation object to display
      */
     protected function get_navigation() {
-        // Initialise (only actually happens if it hasn't already been done yet)
         $this->page->navigation->initialise();
         return clone($this->page->navigation);
     }
@@ -101,7 +100,6 @@ class block_course_navigation extends block_base {
             return $this->content;
         }
 
-        
         if ($format instanceof format_dynamictabs) {
             $sections = $format->tabs_get_sections();
         } else {
@@ -137,7 +135,7 @@ class block_course_navigation extends block_base {
 
         $inactivity = false;
         if ($thiscontext->get_level_name() == get_string('activitymodule')) {
-            //Uh-oh we are in a activity. Better find some more info about this activity
+            // Uh-oh we are in a activity.
             $inactivity = true;
             if ($cm = $DB->get_record_sql("SELECT cm.*, md.name AS modname
                                            FROM {course_modules} cm
@@ -158,10 +156,9 @@ class block_course_navigation extends block_base {
         $courseurl = new moodle_url('/course/view.php', array('id' => $course->id));
         $template->courseurl = $courseurl->out();
         $sectionnums = array();
-        foreach($sections as $section) {
+        foreach ($sections as $section) {
             $sectionnums[] = $section->section;
         }
-
 
         foreach ($sections as $section) {
             $i = $section->section;
@@ -200,7 +197,7 @@ class block_course_navigation extends block_base {
                         continue;
                     }
                     $thismod = new stdClass();
-                    
+
                     if ($inactivity) {
                         if ($myactivityid == $module->id) {
                             $thissection->selected = true;
@@ -231,7 +228,7 @@ class block_course_navigation extends block_base {
 
                 $courseurl = new moodle_url('/course/view.php', array('id' => $course->id, 'section' => $i));
                 $template->courseurl = $courseurl->out();
-                
+
                 if ($pn->next === false) {
                     $template->hasnext = false;
                 }
@@ -266,13 +263,13 @@ class block_course_navigation extends block_base {
 
         $hascurrent = $pn->next = $pn->prev = false;
 
-        foreach($array as $a) {
+        foreach ($array as $a) {
             if ($hascurrent) {
                 $pn->next = $a;
                 break;
             }
             if ($a == $current) {
-                // $hascurrent = true;
+                $hascurrent = true;
             } else {
                 if (!$hascurrent) {
                     $pn->prev = $a;
