@@ -16,7 +16,7 @@
 
 /**
  * @package    block_course_navigation
- * @copyright  2016 Digidago.
+ * @copyright  2016 Digidago <contact@digidago.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -179,10 +179,7 @@ class block_course_navigation extends block_base {
                 $summary = file_rewrite_pluginfile_urls($section->summary, 'pluginfile.php', $context->id, 'course',
                     'section', $section->id);
                 $summary = format_text($summary, $section->summaryformat, array('para' => false, 'context' => $context));
-                $title = format_string($this->extract_title($summary), true, array('context' => $context));
-                if (empty($title)) {
-                    $title = $format->get_section_name($section);
-                }
+                $title = $format->get_section_name($section);
             }
 
             $thissection = new stdClass();
@@ -275,7 +272,7 @@ class block_course_navigation extends block_base {
                 break;
             }
             if ($a == $current) {
-                $hascurrent = true;
+                // $hascurrent = true;
             } else {
                 if (!$hascurrent) {
                     $pn->prev = $a;
@@ -283,47 +280,5 @@ class block_course_navigation extends block_base {
             }
         }
         return $pn;
-    }
-
-
-    /**
-     * Given a section summary, exctract a text suitable as a section title
-     *
-     * @param string $summary Section summary as returned from database (no slashes)
-     * @return string Section title
-     */
-    private function extract_title($summary) {
-        global $CFG;
-        require_once(dirname(__FILE__).'/lib/simple_html_dom.php');
-
-        $node = new simple_html_dom();
-        $node->load($summary);
-        return $this->node_plain_text($node);
-    }
-
-
-    /**
-     * Recursively find the first suitable plaintext from the HTML DOM.
-     *
-     * Internal private function called only from {@link extract_title()}
-     *
-     * @param simple_html_dom $node Current root node
-     * @return string
-     */
-    private function node_plain_text($node) {
-        if ($node->nodetype == HDOM_TYPE_TEXT) {
-            $t = trim($node->plaintext);
-            if (!empty($t)) {
-                return $t;
-            }
-        }
-        $t = '';
-        foreach ($node->nodes as $n) {
-            $t = $this->node_plain_text($n);
-            if (!empty($t)) {
-                break;
-            }
-        }
-        return $t;
     }
 }
