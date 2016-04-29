@@ -31,7 +31,7 @@ module.exports = function(grunt) {
                 options: {
                     compress: false
                 },
-                src: 'less/course_navigation.less',
+                src: 'less/course_modulenavigation.less',
                 dest: 'styles.css'
             }
         },

@@ -1,4 +1,4 @@
-# moodle-block_course_navigation
+# moodle-block_course_modulenavigation
 
 Introduction
 ============
@@ -37,7 +37,7 @@ Installation
  1. Ensure you have the version of Moodle as stated above in 'Required version of Moodle'.  
  2. Put Moodle in 'Maintenance Mode' (docs.moodle.org/en/admin/setting/maintenancemode) so that there are no 
     users using it bar you as the administrator - if you have not already done so.
- 3. Copy 'course_navigation' to '/blocks/' if you have not already done so.
+ 3. Copy 'course_modulenavigation' to '/blocks/' if you have not already done so.
  4. Login as an administrator and follow standard the 'plugin' update notification.  If needed, go to
     'Site administration' -> 'Notifications' if this does not happen.
  5.  Put Moodle out of Maintenance Mode.
@@ -46,7 +46,7 @@ Upgrade Instructions
 ====================
  1. Ensure you have the version of Moodle as stated above in 'Required version of Moodle'.
  2. Put Moodle in 'Maintenance Mode' so that there are no users using it bar you as the administrator.
- 3. In '/blocks/' move old 'course_navigation' directory to a backup folder outside of Moodle.
+ 3. In '/blocks/' move old 'course_modulenavigation' directory to a backup folder outside of Moodle.
  4. Follow installation instructions above.
  5. If automatic 'Purge all caches' appears not to work by lack of display etc. then perform a manual 'Purge all caches'
     under 'Home -> Site administration -> Development -> Purge all caches'.
@@ -55,8 +55,8 @@ Upgrade Instructions
 Uninstallation
 ==============
  1. Put Moodle in 'Maintenance Mode' so that there are no users using it bar you as the administrator.
- 2. In '/blocks/' remove the folder 'course_navigation'.
- 4. In the database, remove the for 'course_navigation' ('plugin' attribute) in the table 'config_plugins'.  If
+ 2. In '/blocks/' remove the folder 'course_modulenavigation'.
+ 4. In the database, remove the for 'course_modulenavigation' ('plugin' attribute) in the table 'config_plugins'.  If
     using the default prefix this will be 'mdl_config_plugins'.
  5. Put Moodle out of Maintenance Mode.
 
@@ -69,7 +69,7 @@ Any Problems, questions, suggestions
 ===================
 If you have a problem with this block, suggestions for improvement, drop an email at :
 - Clément PRUDHOMME :  contact@digidago.com
--  Github : https://github.com/bmbrands/moodle-block_course_navigation
+-  Github : https://github.com/bmbrands/moodle-block_course_modulenavigation
 
 
 Languages and translation

@@ -1,5 +1,5 @@
 <?php
-// This file is part of The Course Navigation Block
+// This file is part of The Course Module Navigation Block
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package    block_course_navigation
+ * @package    block_course_modulenavigation
  * @copyright  2016 Digidago <contact@digidago.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -29,7 +29,7 @@ require_once($CFG->dirroot.'/course/format/lib.php');
  * Course contents block generates a table of course contents based on the
  * section descriptions
  */
-class block_course_navigation extends block_base {
+class block_course_modulenavigation extends block_base {
 
 
     public $titles;
@@ -37,7 +37,7 @@ class block_course_navigation extends block_base {
      * Initializes the block, called by the constructor
      */
     public function init() {
-        $this->title = get_string('pluginname', 'block_course_navigation');
+        $this->title = get_string('pluginname', 'block_course_modulenavigation');
     }
 
     /**
@@ -47,7 +47,7 @@ class block_course_navigation extends block_base {
         if (!empty($this->config->blocktitle)) {
             $this->title = $this->config->blocktitle;
         } else {
-            $this->title = get_string('config_blocktitle_default', 'block_course_navigation');
+            $this->title = get_string('config_blocktitle_default', 'block_course_modulenavigation');
         }
     }
 
@@ -95,7 +95,7 @@ class block_course_navigation extends block_base {
 
         if (!$format->uses_sections()) {
             if (debugging()) {
-                $this->content->text = get_string('notusingsections', 'block_course_navigation');
+                $this->content->text = get_string('notusingsections', 'block_course_modulenavigation');
             }
             return $this->content;
         }
@@ -248,7 +248,7 @@ class block_course_navigation extends block_base {
         }
         $template->coursename = $course->fullname;
         $template->config = $this->config;
-        $renderer = $this->page->get_renderer('block_course_navigation', 'nav');
+        $renderer = $this->page->get_renderer('block_course_modulenavigation', 'nav');
         $this->content->text = $renderer->render_nav($template);
         return $this->content;
     }
