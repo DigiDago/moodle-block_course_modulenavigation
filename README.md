@@ -2,12 +2,12 @@
 
 Introduction
 ============
-Course navigation is a block that show the users a summary (like a table of content) of a course with sections name and a list of all resources and activties (except labels). One objective of this block is to replace the block navigation in a way to present only the course content and sections title.
+Course module navigation is a block that show the users a summary (like a table of content) of a course with sections name and a list of all resources and activties (except labels). One objective of this block is to replace classical block navigation in a way to present only the course contents and sections title.
 - Clicking at section name will display the list of resources and activities of the section
 - Clicking at resources and activites will display the page of the resource or activity.
 
-This block use automaticaly names of sections and names of resources and activities. When you use course navigation, we recommand to use pages to add videos or contents in order to be able to view all resources in the block. If you use labels, contents will be not displayed in course navigation.
-If you want to display Course navigation on all pages of the course, make sure to check permission of the block and display it on "every page".
+This block use automaticaly names of sections and names of resources and activities. When you use course module navigation, we recommand to use pages to add videos or contents in order to be able to view all resources in the list of the block. If you use labels, contents will be not displayed in course navigation.
+If you want to display course module navigation on all pages of the course (main, activities, resources), make sure to check permission of the block and display it on "every page".
 
 == About activity completion ==
 If activity completion is used in the course, course navigation block display a circle empty or green to show state of completion. 
@@ -20,7 +20,7 @@ This block has an option to display at choice :
 
 Maintainer
 ============
-The block has been developed by Bas Brand and was based on an request of Digidago (Clément PRUDHOMME). It is currently maintained by DigiDago / Bas Brand.
+Course module navigation has been developed by Bas Brand and was based on an request of Digidago (Clément PRUDHOMME). It is currently maintained by DigiDago / Bas Brand.
 
 
 Required version of Moodle
