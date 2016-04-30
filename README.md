@@ -77,6 +77,12 @@ Languages and translation
 English and french versions included / versions anglaise et française incluses.
 
 
+Customization
+===================
+You can esayli use .css to customize style of the bloc course module navigaiton.
+
+
+
 Us
 ==
 Bas Brands (http://sonsbeekmedia.nl/)
