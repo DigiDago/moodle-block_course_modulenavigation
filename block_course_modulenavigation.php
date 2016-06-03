@@ -249,7 +249,7 @@ class block_course_modulenavigation extends block_base {
     /**
      * Function to get the previous and next values in an array
      * @param array array to search
-     * @param string 
+     * @param string
      * @return object $pn with prev and next values.
      */
     private function get_prev_next($array, $current) {
