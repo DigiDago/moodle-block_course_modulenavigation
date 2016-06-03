@@ -31,8 +31,6 @@ require_once($CFG->dirroot.'/course/format/lib.php');
  */
 class block_course_modulenavigation extends block_base {
 
-
-    public $titles;
     /**
      * Initializes the block, called by the constructor
      */

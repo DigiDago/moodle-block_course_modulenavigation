@@ -30,4 +30,4 @@ $string['config_onesection'] = 'Show the current section only';
 $string['config_onesection_label'] = 'If enabled show one section only. If disabled show an accordion style menu';
 $string['course_modulenavigation:addinstance'] = 'Add a new course contents block';
 $string['notusingsections'] = 'This course format does not use sections.';
-$string['pluginname'] = 'Course Module navigation';
+$string['pluginname'] = 'Course Module Navigation';
