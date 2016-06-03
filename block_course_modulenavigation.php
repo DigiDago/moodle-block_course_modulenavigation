@@ -110,8 +110,6 @@ class block_course_modulenavigation extends block_base {
 
         $context = context_course::instance($course->id);
 
-        $text = html_writer::start_tag('ul', array('class' => 'section-list'));
-
         if ($format instanceof format_dynamictabs) {
             $course = $format->get_course();
         }
@@ -126,10 +124,8 @@ class block_course_modulenavigation extends block_base {
         }
 
         $completionok = array(COMPLETION_COMPLETE, COMPLETION_COMPLETE_PASS);
-        $completionfail = array(COMPLETION_COMPLETE_FAIL, COMPLETION_INCOMPLETE);
 
         $thiscontext = context::instance_by_id($this->page->context->id);
-        $thisurl = ($this->page->url);
 
         $inactivity = false;
         if ($thiscontext->get_level_name() == get_string('activitymodule')) {
@@ -219,7 +215,6 @@ class block_course_modulenavigation extends block_base {
                 $template->sections[] = $thissection;
             }
 
-            $hascurrent = $getnext = $next = $prev = false;
             if ($thissection->selected) {
 
                 $pn = $this->get_prev_next($sectionnums, $thissection->number);
@@ -254,6 +249,7 @@ class block_course_modulenavigation extends block_base {
     /**
      * Function to get the previous and next values in an array
      * @param array array to search
+     * @param string 
      * @return object $pn with prev and next values.
      */
     private function get_prev_next($array, $current) {

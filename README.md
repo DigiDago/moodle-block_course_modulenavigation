@@ -1,5 +1,7 @@
 # moodle-block_course_modulenavigation
 
+[![Build Status](https://travis-ci.org/bmbrands/moodle-block_course_modulenavigation.svg?branch=master)](https://travis-ci.org/bmbrands/moodle-block_course_modulenavigation)
+
 Introduction
 ============
 Course module navigation is a block that show the users a summary (like a table of content) of a course with sections name and a list of all resources and activties (except labels). One objective of this block is to replace classical block navigation in a way to present only the course contents and sections title.
