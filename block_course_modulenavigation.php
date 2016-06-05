@@ -190,6 +190,9 @@ class block_course_modulenavigation extends block_base {
                     if ($module->modname == 'label' || $module->modname == 'url') {
                         continue;
                     }
+                    if (! $module->uservisible) {
+                        continue;
+                    }
                     $thismod = new stdClass();
 
                     if ($inactivity) {
