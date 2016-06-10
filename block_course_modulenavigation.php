@@ -128,6 +128,7 @@ class block_course_modulenavigation extends block_base {
         $thiscontext = context::instance_by_id($this->page->context->id);
 
         $inactivity = false;
+        $myactivityid = 0;
         if ($thiscontext->get_level_name() == get_string('activitymodule')) {
             // Uh-oh we are in a activity.
             $inactivity = true;
