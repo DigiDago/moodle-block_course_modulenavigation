@@ -236,6 +236,9 @@ class block_course_modulenavigation extends block_base {
                 $prevurl = new moodle_url('/course/view.php', array('id' => $course->id, 'section' => $pn->prev));
                 $template->prevurl = $prevurl->out(false);
 
+                $currurl = new moodle_url('/course/view.php', array('id' => $course->id, 'section' => $thissection->number));
+                $template->currurl = $currurl->out(false);
+
                 $nexturl = new moodle_url('/course/view.php', array('id' => $course->id, 'section' => $pn->next));
                 $template->nexturl = $nexturl->out(false);
             }
