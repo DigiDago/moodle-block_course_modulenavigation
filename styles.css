@@ -112,6 +112,9 @@
 .block.block_course_modulenavigation .section-title > .small > a {
   color: inherit;
 }
+.block.block_course_modulenavigation .section-title > a.expand-arrow {
+  float: right;
+}
 .block.block_course_modulenavigation .section-footer {
   padding: 10px 15px;
   background-color: #f5f5f5;
