@@ -5,7 +5,7 @@
 Introduction
 ============
 Course module navigation is a block that show the users a summary (like a table of content) of a course with sections name and a list of all resources and activties (except labels and URL). One objective of this block is to replace classical block navigation in a way to present only the course contents and sections title.
-- Clicking at section name will point to section area or section page (for example if you use a course format as one seciton by page).
+- Clicking at section name will point to section area or section page (for example if you use a course format as one section by page).
 - Clicking on arrow down display the list of resources and activities of the section ("show one section only" option must be disable).
 - Clicking at resources and activites will display the page of the resource or activity.
 
