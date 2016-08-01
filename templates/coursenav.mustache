@@ -33,9 +33,20 @@
   <div class="section section-default">
     <div class="section-heading" role="tab" id="heading{{number}}">
       <div class="section-title">
-        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{number}}" aria-expanded="true" aria-controls="collapse{{number}}">
-          {{title}}
-        </a>
+        <ul class="allpagination">
+            <li class="allsectionnames">
+                <a href="{{{url}}}">
+                {{title}}
+                </a>
+            </li>
+            <li class="arrowaccordion">
+                {{#hasmodules}}
+                <a class="expand-arrow" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{number}}" aria-expanded="true" aria-controls="collapse{{number}}">
+                <img src="{{arrowpixurl}}" /> 
+                </a>
+                {{/hasmodules}}
+            </li>
+        </ul>
       </div>
     </div>
     <div id="collapse{{number}}" class="section-collapse collapse {{#selected}}in{{/selected}}" role="tabsection" aria-labelledby="heading{{number}}">

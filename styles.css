@@ -3,7 +3,7 @@
   padding: 5px;
   background-color: #FFF;
 }
-.block.block_course_modulenavigation .pagination {
+.block.block_course_modulenavigation .pagination, .block.block_course_modulenavigation .allpagination {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -22,11 +22,24 @@
   border-radius: 0;
   border: 0;
 }
-.block.block_course_modulenavigation .pagination > li {
+.block.block_course_modulenavigation .allpagination .allsectionnames {
+  width: 90%;
+  border-radius: 0;
+  border: 0;
+}
+.block.block_course_modulenavigation .pagination > li, .block.block_course_modulenavigation .allpagination > li {
   display: table-cell;
 }
 .block.block_course_modulenavigation .pagination > li a {
   padding: 10px 15px;
+  float: none;
+  display: block;
+  background-color: transparent;
+  border-radius: 0;
+  border: 0;
+}
+.block.block_course_modulenavigation .allpagination > li a {
+  padding: 0px 0px;
   float: none;
   display: block;
   background-color: transparent;
@@ -111,6 +124,9 @@
 .block.block_course_modulenavigation .section-title > small > a,
 .block.block_course_modulenavigation .section-title > .small > a {
   color: inherit;
+}
+.block.block_course_modulenavigation .expand-arrow {
+    width: 18px;
 }
 .block.block_course_modulenavigation .section-footer {
   padding: 10px 15px;

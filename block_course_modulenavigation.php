@@ -73,6 +73,7 @@ class block_course_modulenavigation extends block_base {
      */
     public function get_content() {
         global $DB;
+        global $OUTPUT;
         if (!is_null($this->content)) {
             return $this->content;
         }
@@ -154,6 +155,7 @@ class block_course_modulenavigation extends block_base {
         foreach ($sections as $section) {
             $sectionnums[] = $section->section;
         }
+        $template->arrowpixurl = $OUTPUT->pix_url('arrow-down', 'block_course_modulenavigation');
 
         foreach ($sections as $section) {
             $i = $section->section;
@@ -216,6 +218,7 @@ class block_course_modulenavigation extends block_base {
                     }
                     $thissection->modules[] = $thismod;
                 }
+                $thissection->hasmodules = (count($thissection->modules) > 0);
                 $template->sections[] = $thissection;
             }
 
