@@ -18,5 +18,5 @@ Version 3.2 (2016.06.23)
 
 
 Version 3.2 (2016.08.01)
-  1. Add links on the sections titles. Now each section title point to section pages
+  1. Add links on the sections titles. Now each section title point to section page
   2. Add an arrow after sections titles to open menu content. 
