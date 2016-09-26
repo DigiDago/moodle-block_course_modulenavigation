@@ -1,0 +1,286 @@
+@section-bg:                    #fff;
+@section-body-padding:          0px;
+@section-heading-padding:       10px 15px;
+@section-footer-padding:        @section-heading-padding;
+@section-border-radius:         0px;
+
+//** Border color for elements within sections
+@section-inner-border:          #ddd;
+@section-footer-bg:             #f5f5f5;
+
+@section-default-text:          #333;
+@section-default-border:        #ddd;
+@section-default-heading-bg:    #f5f5f5;
+
+
+.border-top-radius(@radius) {
+    border-top-right-radius: @radius;
+     border-top-left-radius: @radius;
+}
+.border-right-radius(@radius) {
+    border-bottom-right-radius: @radius;
+         border-top-right-radius: @radius;
+}
+.border-bottom-radius(@radius) {
+    border-bottom-right-radius: @radius;
+     border-bottom-left-radius: @radius;
+}
+.border-left-radius(@radius) {
+    border-bottom-left-radius: @radius;
+    border-top-left-radius: @radius;
+}
+
+
+.block.block_course_modulenavigation {
+    .content {
+        white-space: normal;
+        padding: 5px;
+        background-color: #FFF;
+    }
+
+    .pagination
+    .allpagination {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        .prev,
+        .next {
+            width: 10%;
+            a {
+                background-color: #FFF;
+
+            }
+        }
+        .sectionname
+        .allsectionames {
+            width: 80%;
+            border-radius: 0;
+            border: 0;
+        }
+        display: table;
+        &>li {
+            display: table-cell;
+            a {
+                padding: @section-heading-padding;
+                float: none;
+                display: block;
+                background-color: transparent;
+                border-radius: 0;
+                border: 0;
+            }
+        }
+
+    }
+
+    ul.activities {
+        margin: 0;
+        list-style: none;
+        li > a {
+            padding: 5px 10px;
+            border-bottom: 1px solid #eee;
+            display: block;
+            &:hover,
+            &.active {
+                text-decoration: none;
+                background-color: #eee;
+            }
+        }
+        .completionbox {
+            position: relative;
+            display: table-cell;
+            width: 18px;
+        }
+        .activityname {
+            display: table-cell;
+        }
+        .completioncheck {
+            position: absolute;
+            top: 50%;
+            margin-top: -5px;
+            content: '';
+            width: 10px;
+            height: 10px;
+            
+            border-radius: 5px;
+            display: inline-block;
+            &.incomplete {
+                border: 1px solid #ccc;
+            }
+            &.completed {
+                border: 1px solid #5cb85c;
+                background-color: #5cb85c;
+            }
+        }
+    }
+
+    // Base class
+    .section {
+        margin-bottom: 20px;
+        background-color: @section-bg;
+        border: 1px solid transparent;
+        border-radius: @section-border-radius;
+    }
+
+    // section contents
+    .section-body {
+        padding: @section-body-padding;
+        &:extend(.clearfix all);
+    }
+
+    // Optional heading
+    .section-heading {
+        padding: @section-heading-padding;
+        border-bottom: 1px solid transparent;
+        .border-top-radius((@section-border-radius - 1));
+
+        > .dropdown .dropdown-toggle {
+            color: inherit;
+        }
+    }
+    .tocourse {
+        display: block;
+        padding: @section-heading-padding;
+        background-color: @section-default-heading-bg;
+        border: 1px solid @section-default-border;
+        margin-bottom: 3px;
+    }
+    .onesection .section-heading {
+        padding: 0;
+    }
+
+    // Within heading, strip any `h*` tag of its default margins for spacing.
+    .section-title {
+        margin-top: 0;
+        margin-bottom: 0;
+        color: inherit;
+
+        > a,
+        > small,
+        > .small,
+        > small > a,
+        > .small > a {
+            color: inherit;
+        }
+    }
+
+    // Optional footer (stays gray in every modifier class)
+    .section-footer {
+        padding: @section-footer-padding;
+        background-color: @section-footer-bg;
+        border-top: 1px solid @section-inner-border;
+        .border-bottom-radius((@section-border-radius - 1));
+    }
+
+
+    // List groups in sections
+    //
+    // By default, space out list group content from section headings to account for
+    // any kind of custom content between the two.
+
+    .section {
+        > .list-group,
+        > .section-collapse > .list-group {
+            margin-bottom: 0;
+
+            .list-group-item {
+                border-width: 1px 0;
+                border-radius: 0;
+            }
+
+            // Add border top radius for first one
+            &:first-child {
+                .list-group-item:first-child {
+                    border-top: 0;
+                    .border-top-radius((@section-border-radius - 1));
+                }
+            }
+
+            // Add border bottom radius for last one
+            &:last-child {
+                .list-group-item:last-child {
+                    border-bottom: 0;
+                    .border-bottom-radius((@section-border-radius - 1));
+                }
+            }
+        }
+        > .section-heading + .section-collapse > .list-group {
+            .list-group-item:first-child {
+                .border-top-radius(0);
+            }
+        }
+    }
+    // Collapse space between when there's no additional content.
+    .section-heading + .list-group {
+        .list-group-item:first-child {
+            border-top-width: 0;
+        }
+    }
+    .list-group + .section-footer {
+        border-top-width: 0;
+    }
+
+
+    // Collapsable sections (aka, accordion)
+    //
+    // Wrap a series of sections in `.section-group` to turn them into an accordion with
+    // the help of our collapse JavaScript plugin.
+
+    .section-group {
+        margin-bottom: 20px;
+
+        // Tighten up margin so it's only between sections
+        .section {
+            margin-bottom: 0;
+            border-radius: @section-border-radius;
+
+            + .section {
+                margin-top: 5px;
+            }
+        }
+
+        .section-heading {
+            border-bottom: 0;
+
+            + .section-collapse > .section-body,
+            + .section-collapse > .list-group {
+                border-top: 1px solid @section-inner-border;
+            }
+        }
+
+        .section-footer {
+            border-top: 0;
+            + .section-collapse .section-body {
+                border-bottom: 1px solid @section-inner-border;
+            }
+        }
+    }
+
+    .section-variant(@border; @heading-text-color; @heading-bg-color; @heading-border) {
+        border-color: @border;
+
+        & > .section-heading {
+            color: @heading-text-color;
+            background-color: @heading-bg-color;
+            border-color: @heading-border;
+
+            + .section-collapse > .section-body {
+                border-top-color: @border;
+            }
+            .badge {
+                color: @heading-bg-color;
+                background-color: @heading-text-color;
+            }
+        }
+        & > .section-footer {
+            + .section-collapse > .section-body {
+                border-bottom-color: @border;
+            }
+        }
+    }
+
+
+    // Contextual variations
+    .section-default {
+        .section-variant(@section-default-border; @section-default-text; @section-default-heading-bg; @section-default-border);
+    }
+}
