@@ -186,6 +186,18 @@ class block_course_modulenavigation extends block_base {
             $thissection->url = $format->get_view_url($section);
             $thissection->selected = false;
 
+            if (get_config('block_course_modulenavigation', 'toggleclickontitle') == 2) {
+                // display the menu
+                $thissection-> collapse = true;
+            } else {
+                // go to link
+                $thissection-> collapse = false;
+            }
+
+            if (get_config('block_course_modulenavigation', 'togglecollapse') == 2) {
+                $thissection->selected = true;
+            }
+
             if ($i == $selected && !$inactivity) {
                 $thissection->selected = true;
             }
@@ -194,7 +206,7 @@ class block_course_modulenavigation extends block_base {
             if (!empty($modinfo->sections[$i])) {
                 foreach ($modinfo->sections[$i] as $modnumber) {
                     $module = $modinfo->cms[$modnumber];
-                    if ($module->modname == 'label' || $module->modname == 'url') {
+                    if ( (get_config('block_course_modulenavigation', 'toggleshowlabels') == 1) && ($module->modname == 'label') ) {
                         continue;
                     }
                     if (! $module->uservisible) {
@@ -211,6 +223,10 @@ class block_course_modulenavigation extends block_base {
 
                     $thismod->name = $module->name;
                     $thismod->url = $module->url;
+                    if ($module->modname == 'label') {
+                        $thismod->url = '';
+                        $thismod->label = 'true';
+                    }
                     $hascompletion = $completioninfo->is_enabled($module);
                     if ($hascompletion) {
                         $thismod->completeclass = 'incomplete';
