@@ -38,6 +38,10 @@ class block_course_modulenavigation extends block_base {
         $this->title = get_string('pluginname', 'block_course_modulenavigation');
     }
 
+    public function has_config() {
+        return true;
+    }
+
     /**
      * Amend the block instance after it is loaded
      */

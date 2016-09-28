@@ -31,3 +31,7 @@ $string['config_onesection_label'] = 'If enabled show one section only. If disab
 $string['course_modulenavigation:addinstance'] = 'Add a new course contents block';
 $string['notusingsections'] = 'This course format does not use sections.';
 $string['pluginname'] = 'Course Module Navigation';
+$string['toggleclickonarrow'] = 'Clicking on the downwards arrow displays';
+$string['toggleclickonarrow_desc'] = "'Displays the menu' or 'Goes to that page'.";
+$string['toggleclickonarrow_menu'] = 'Displays the menu';
+$string['toggleclickonarrow_page'] = 'Goes to that page';
