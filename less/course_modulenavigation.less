@@ -38,7 +38,7 @@
         background-color: #FFF;
     }
 
-    .pagination
+    .pagination,
     .allpagination {
         margin: 0;
         padding: 0;
@@ -51,17 +51,21 @@
 
             }
         }
-        .sectionname
+        .sectionname,
         .allsectionames {
-            width: 80%;
+            width: 90%;
             border-radius: 0;
             border: 0;
+        }
+        .expand-arrow {
+            width: 18px;
+            float: right;
         }
         display: table;
         &>li {
             display: table-cell;
             a {
-                padding: @section-heading-padding;
+                padding: 0;
                 float: none;
                 display: block;
                 background-color: transparent;
@@ -110,6 +114,12 @@
                 border: 1px solid #5cb85c;
                 background-color: #5cb85c;
             }
+        }
+        .modulenavigationlabel {
+            pointer-events: none;
+            cursor: default;
+            color: black;
+            font-weight: 700;
         }
     }
 

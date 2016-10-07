@@ -35,10 +35,16 @@
       <div class="section-title">
         <ul class="allpagination">
             <li class="allsectionnames">
+                {{#collapse}}
                 <a href="{{{url}}}">
+                {{/collapse}}
+                {{^collapse}}
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{number}}" aria-expanded="true" aria-controls="collapse{{number}}">
+                {{/collapse}}
                 {{title}}
                 </a>
             </li>
+            {{#collapse}}
             <li class="arrowaccordion">
                 {{#hasmodules}}
                 <a class="expand-arrow" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{number}}" aria-expanded="true" aria-controls="collapse{{number}}">
@@ -46,6 +52,7 @@
                 </a>
                 {{/hasmodules}}
             </li>
+            {{/collapse}}
         </ul>
       </div>
     </div>
@@ -54,7 +61,7 @@
        <ul class="activities">
         {{#modules}}
             <li>
-            <a href="{{{url}}}" class="{{active}}">
+            <a href="{{{url}}}" class="{{active}} {{#label}}modulenavigationlabel{{/label}}">
               {{#completionon}}
                   <div class="completionbox">
                     <div class="completioncheck {{completeclass}}">
