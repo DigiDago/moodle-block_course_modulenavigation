@@ -80,7 +80,7 @@ Any Problems, questions, suggestions
 ===================
 If you have a problem with this block, suggestions for improvement, drop an email at :
 - Clément PRUDHOMME :  contact@digidago.com
--  Github : https://github.com/bmbrands/moodle-block_course_modulenavigation
+-  Github : https://github.com/clementpr/moodle_course_menunavigation/
 
 
 Languages and translation
