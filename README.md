@@ -11,6 +11,7 @@ This block use automaticaly names of sections and names of resources and activit
 If you want to display course module navigation on all pages of the course (main, activities, resources), make sure to check permission of the block and display it on "every page".
 
 == We add some options. Now you can : ==
+
 **Section Names**
 - Option A : Clicking at section name will point to section area or section page (for example if you use a course format as one section by page).
 - Option B : Clicking at section name will display the list of resources and activities
@@ -20,6 +21,7 @@ You can choose if labels are displayed or not in the menu with the option "toggl
 
 **Expand/open menu**
 You can chose if menu is always open with the option "togglecollapse"
+
 
 == About activity completion ==
 If activity completion is used in the course, course navigation block display a circle empty or green to show state of completion. 
