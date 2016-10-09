@@ -4,26 +4,34 @@
 
 Introduction
 ============
-Course module navigation is a block that show the users a summary (like a table of content) of a course with sections name and a list of all resources and activties (except labels and URL). One objective of this block is to replace classical block navigation in a way to present only the course contents and sections title.
-- Clicking at section name will point to section area or section page (for example if you use a course format as one section by page).
-- Clicking on arrow down display the list of resources and activities of the section ("show one section only" option must be disable).
-- Clicking at resources and activites will display the page of the resource or activity.
+Course module navigation is a block that show the users a summary (like a table of content) of a course with sections name and a list of all resources and activties (except URL). One objective of this block is to replace classical block navigation in a way to present only the course contents and sections title.
+If you click on resources and activites of the menu, you display the page of the resource or activity.
 
-This block use automaticaly names of sections and names of resources and activities. When you use course module navigation, we recommand to use pages to add videos or contents in order to be able to view all resources in the list of the block. If you use labels, contents will be not displayed in course navigation.
+This block use automaticaly names of sections and names of resources and activities. When you use course module navigation, we recommand to use pages to add videos or contents in order to be able to view all resources in the list of the block.
 If you want to display course module navigation on all pages of the course (main, activities, resources), make sure to check permission of the block and display it on "every page".
+
+== We add some options. Now you can : ==
+**Section Names**
+- Option A : Clicking at section name will point to section area or section page (for example if you use a course format as one section by page).
+- Option B : Clicking at section name will display the list of resources and activities
+
+**Labels**
+You can choose if labels are displayed or not in the menu with the option "toggleshowlabels".
+
+**Expand/open menu**
+You can chose if menu is always open with the option "togglecollapse"
 
 == About activity completion ==
 If activity completion is used in the course, course navigation block display a circle empty or green to show state of completion. 
 
-== Option ==
+== Display Type of the menu ==
 This block has an option to display at choice :
 - Only the active section
 - or all the sections 
 
-
 Maintainer
 ============
-Course module navigation has been developed by Bas Brand and was based on an request of Digidago (Clément PRUDHOMME). It is currently maintained by DigiDago / Bas Brand.
+Course module navigation was initialy developed by Bas Brand and was based on an request of Digidago (Clément PRUDHOMME). It is currently maintained by DigiDago.
 
 
 Required version of Moodle
@@ -72,7 +80,7 @@ Any Problems, questions, suggestions
 ===================
 If you have a problem with this block, suggestions for improvement, drop an email at :
 - Clément PRUDHOMME :  contact@digidago.com
--  Github : https://github.com/bmbrands/moodle-block_course_modulenavigation
+-  Github : https://github.com/clementpr/moodle_course_menunavigation/
 
 
 Languages and translation
@@ -88,6 +96,6 @@ You can esayli use .css to customize style of the bloc course module navigaiton.
 
 Us
 ==
-Bas Brands (http://sonsbeekmedia.nl/)
-Clément Prudhomme (@copyright 2016 Digidago http://digidago.com/)
+@copyright 2016 Digidago http://digidago.com/
 
+@author Bas Brands (http://sonsbeekmedia.nl/) | Nick Papoutsis
