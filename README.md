@@ -88,6 +88,5 @@ You can esayli use .css to customize style of the bloc course module navigaiton.
 
 Us
 ==
-Bas Brands (http://sonsbeekmedia.nl/)
-Clément Prudhomme (@copyright 2016 Digidago http://digidago.com/)
-
+@copyright 2016 Digidago http://digidago.com/
+@author Bas Brands (http://sonsbeekmedia.nl/) | Nick Papoutsis
