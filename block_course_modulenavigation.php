@@ -187,11 +187,11 @@ class block_course_modulenavigation extends block_base {
             $thissection->selected = false;
 
             if (get_config('block_course_modulenavigation', 'toggleclickontitle') == 2) {
-                // display the menu
-                $thissection-> collapse = true;
+                // Display the menu.
+                $thissection->collapse = true;
             } else {
-                // go to link
-                $thissection-> collapse = false;
+                // Go to link.
+                $thissection->collapse = false;
             }
 
             if (get_config('block_course_modulenavigation', 'togglecollapse') == 2) {
