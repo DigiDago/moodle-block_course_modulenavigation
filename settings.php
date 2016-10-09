@@ -24,7 +24,7 @@ defined('MOODLE_INTERNAL') || die;
 
 if ($ADMIN->fulltree) {
 
-    // Option: clicking on the downwards arrow 1) displays the menu or 2)goes to that page
+    // Option: clicking on the downwards arrow 1) displays the menu or 2)goes to that page.
     $name = 'block_course_modulenavigation/toggleclickontitle';
     $title = get_string('toggleclickontitle', 'block_course_modulenavigation');
     $description = get_string('toggleclickontitle_desc', 'block_course_modulenavigation');
@@ -35,7 +35,7 @@ if ($ADMIN->fulltree) {
     );
     $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
-    // Option: show labels
+    // Option: show labels.
     $name = 'block_course_modulenavigation/toggleshowlabels';
     $title = get_string('toggleshowlabels', 'block_course_modulenavigation');
     $description = get_string('toggleshowlabels_desc', 'block_course_modulenavigation');
@@ -46,7 +46,7 @@ if ($ADMIN->fulltree) {
     );
     $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
-    // Option: Show all tabs open
+    // Option: Show all tabs open.
     $name = 'block_course_modulenavigation/togglecollapse';
     $title = get_string('togglecollapse', 'block_course_modulenavigation');
     $description = get_string('togglecollapse_desc', 'block_course_modulenavigation');
