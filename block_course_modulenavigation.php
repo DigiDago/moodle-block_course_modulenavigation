@@ -103,7 +103,7 @@ class block_course_modulenavigation extends block_base {
             return $this->content;
         }
 
-        if ($format instanceof format_dynamictabs) {
+        if ($format instanceof format_digidagotabs) {
             $sections = $format->tabs_get_sections();
         } else {
             $sections = $format->get_sections();
@@ -115,7 +115,7 @@ class block_course_modulenavigation extends block_base {
 
         $context = context_course::instance($course->id);
 
-        if ($format instanceof format_dynamictabs) {
+        if ($format instanceof format_digidagotabs) {
             $course = $format->get_course();
         }
         $modinfo = get_fast_modinfo($course);
