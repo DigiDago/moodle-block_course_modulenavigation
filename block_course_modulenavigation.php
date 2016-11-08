@@ -221,7 +221,7 @@ class block_course_modulenavigation extends block_base {
                         }
                     }
 
-                    $thismod->name = $module->name;
+                    $thismod->name = format_string($module->name, true, array('context' => $context));
                     $thismod->url = $module->url;
                     if ($module->modname == 'label') {
                         $thismod->url = '';
