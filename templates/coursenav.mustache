@@ -36,10 +36,15 @@
         <ul class="allpagination">
             <li class="allsectionnames">
                 {{#collapse}}
-                <a href="{{{url}}}">
+                  <a href="{{{url}}}">
                 {{/collapse}}
                 {{^collapse}}
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{number}}" aria-expanded="true" aria-controls="collapse{{number}}">
+                  {{#onlytitles}}
+                    <a href="{{{url}}}">
+                  {{/onlytitles}}
+                  {{^onlytitles}}
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{number}}" aria-expanded="true" aria-controls="collapse{{number}}">
+                  {{/onlytitles}}
                 {{/collapse}}
                 {{title}}
                 </a>
@@ -47,9 +52,8 @@
             {{#collapse}}
             <li class="arrowaccordion">
                 {{#hasmodules}}
-                <a class="expand-arrow" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{number}}" aria-expanded="true" aria-controls="collapse{{number}}">
-                <img src="{{arrowpixurl}}" /> 
-                </a>
+                  <a class="expand-arrow" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{number}}" aria-expanded="true" aria-controls="collapse{{number}}">
+                  </a>
                 {{/hasmodules}}
             </li>
             {{/collapse}}
@@ -60,19 +64,21 @@
       <div class="section-body">
        <ul class="activities">
         {{#modules}}
+          {{^onlytitles}}
             <li>
-            <a href="{{{url}}}" class="{{active}} {{#label}}modulenavigationlabel{{/label}}">
-              {{#completionon}}
+              <a href="{{{url}}}" class="{{active}} {{#label}}modulenavigationlabel{{/label}}">
+                {{#completionon}}
                   <div class="completionbox">
                     <div class="completioncheck {{completeclass}}">
                     </div>
                   </div>
-              {{/completionon}}
+                {{/completionon}}
                   <div class="activityname">
                   {{{name}}}
                   </div>
-            </a>
+              </a>
             </li>
+          {{/onlytitles}}
         {{/modules}}
         </ul>
       </div>

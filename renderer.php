@@ -21,6 +21,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die();
 class block_course_modulenavigation_nav_renderer extends plugin_renderer_base {
     public function render_nav($template) {
         if (isset($template->config->onesection) && ($template->config->onesection == 1)) {

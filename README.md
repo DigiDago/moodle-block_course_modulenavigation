@@ -1,6 +1,6 @@
 # moodle-block_course_modulenavigation
 
-[![Build Status](https://travis-ci.org/bmbrands/moodle-block_course_modulenavigation.svg?branch=master)](https://travis-ci.org/bmbrands/moodle-block_course_modulenavigation)
+[![Build Status](https://travis-ci.org/nikpap/moodle_course_menunavigation.svg?branch=master)](https://travis-ci.org/nikpap/moodle_course_menunavigation)
 
 Introduction
 ============
@@ -82,7 +82,7 @@ Any Problems, questions, suggestions
 ===================
 If you have a problem with this block, suggestions for improvement, drop an email at :
 - Clément PRUDHOMME :  contact@digidago.com
--  Github : https://github.com/clementpr/moodle_course_menunavigation/
+- Github : https://github.com/clementpr/moodle_course_menunavigation/
 
 
 Languages and translation
@@ -92,7 +92,7 @@ English and french versions included / versions anglaise et française incluses.
 
 Customization
 ===================
-You can esayli use .css to customize style of the bloc course module navigaiton.
+You can easily use .css to customize style of the bloc course module navigation.
 
 
 
@@ -100,4 +100,5 @@ Us
 ==
 @copyright 2016 Digidago http://digidago.com/
 
-@author Bas Brands (http://sonsbeekmedia.nl/) | Nick Papoutsis
+@author Bas Brands (http://sonsbeekmedia.nl/)
+@author Nick Papoutsis(http://nils.gr/)

@@ -39,3 +39,5 @@ $string['toggleshowlabels'] = 'Show labels';
 $string['toggleshowlabels_desc'] = 'Choose whether to display labels or not';
 $string['togglecollapse'] = 'Collapse tabs';
 $string['togglecollapse_desc'] = 'Choose whether to display all tabs not collapsed';
+$string['toggletitles'] = 'Show only titles';
+$string['toggletitles_desc'] = 'Choose whether to display only titles or titles and content';

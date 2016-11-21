@@ -45,7 +45,7 @@ class block_course_modulenavigation_edit_form extends block_edit_form {
 
         $mform->addElement('advcheckbox', 'config_onesection', get_string('config_onesection', 'block_course_modulenavigation'),
             get_string('config_onesection_label', 'block_course_modulenavigation'));
-        $mform->setDefault('config_onesection', 1);
+        $mform->setDefault('config_onesection', 0);
         $mform->setType('config_onesection', PARAM_BOOL);
     }
 }

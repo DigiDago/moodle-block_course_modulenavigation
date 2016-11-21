@@ -41,3 +41,5 @@ $string['toggleshowlabels'] = 'Afficher les étiquettes';
 $string['toggleshowlabels_desc'] = 'Choisir d\'afficher ou non les étiquettes';
 $string['togglecollapse'] = 'Déplier les tabs';
 $string['togglecollapse_desc'] = 'Choisir de déplier tous les tabs par défaut';
+$string['toggletitles'] = 'Afficher les titres';
+$string['toggletitles_desc'] = 'Choisir d\'afficher que les titres ou les titres et le contenu';

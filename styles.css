@@ -20,7 +20,7 @@
 .block.block_course_modulenavigation .allpagination .prev a,
 .block.block_course_modulenavigation .pagination .next a,
 .block.block_course_modulenavigation .allpagination .next a {
-  background-color: #FFF;
+  background-color: inherit;
 }
 .block.block_course_modulenavigation .pagination .sectionname,
 .block.block_course_modulenavigation .allpagination .sectionname,
@@ -50,6 +50,7 @@
 }
 .block.block_course_modulenavigation ul.activities {
   margin: 0;
+  padding: 0;
   list-style: none;
 }
 .block.block_course_modulenavigation ul.activities li > a {
@@ -97,16 +98,16 @@
   margin-bottom: 20px;
   background-color: #ffffff;
   border: 1px solid transparent;
-  border-radius: 0px;
+  border-radius: 0;
 }
 .block.block_course_modulenavigation .section-body {
-  padding: 0px;
+  padding: 0;
 }
 .block.block_course_modulenavigation .section-heading {
   padding: 10px 15px;
   border-bottom: 1px solid transparent;
-  border-top-right-radius: -1px;
-  border-top-left-radius: -1px;
+  border-top-right-radius: -1;
+  border-top-left-radius: -1;
 }
 .block.block_course_modulenavigation .section-heading > .dropdown .dropdown-toggle {
   color: inherit;
@@ -117,6 +118,9 @@
   background-color: #f5f5f5;
   border: 1px solid #dddddd;
   margin-bottom: 3px;
+}
+.block.block_course_modulenavigation .tocourse:hover {
+  text-decoration: none;
 }
 .block.block_course_modulenavigation .onesection .section-heading {
   padding: 0;
@@ -137,8 +141,8 @@
   padding: 10px 15px;
   background-color: #f5f5f5;
   border-top: 1px solid #dddddd;
-  border-bottom-right-radius: -1px;
-  border-bottom-left-radius: -1px;
+  border-bottom-right-radius: -1;
+  border-bottom-left-radius: -1;
 }
 .block.block_course_modulenavigation .section > .list-group,
 .block.block_course_modulenavigation .section > .section-collapse > .list-group {
@@ -152,14 +156,14 @@
 .block.block_course_modulenavigation .section > .list-group:first-child .list-group-item:first-child,
 .block.block_course_modulenavigation .section > .section-collapse > .list-group:first-child .list-group-item:first-child {
   border-top: 0;
-  border-top-right-radius: -1px;
-  border-top-left-radius: -1px;
+  border-top-right-radius: -1;
+  border-top-left-radius: -1;
 }
 .block.block_course_modulenavigation .section > .list-group:last-child .list-group-item:last-child,
 .block.block_course_modulenavigation .section > .section-collapse > .list-group:last-child .list-group-item:last-child {
   border-bottom: 0;
-  border-bottom-right-radius: -1px;
-  border-bottom-left-radius: -1px;
+  border-bottom-right-radius: -1;
+  border-bottom-left-radius: -1;
 }
 .block.block_course_modulenavigation .section > .section-heading + .section-collapse > .list-group .list-group-item:first-child {
   border-top-right-radius: 0;
@@ -176,7 +180,7 @@
 }
 .block.block_course_modulenavigation .section-group .section {
   margin-bottom: 0;
-  border-radius: 0px;
+  border-radius: 0;
 }
 .block.block_course_modulenavigation .section-group .section + .section {
   margin-top: 5px;
