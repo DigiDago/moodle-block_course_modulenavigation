@@ -8,9 +8,17 @@
     "url": "http://www.iamjoby.com"
   },
   "contributors": [
-    { "name": "David Scotson" },
-    { "name": "Bas Brands", "url": "http://www.basbrands.nl" },
-    { "name": "Gareth J Barnard", "url": "http://about.me/gjbarnard" }
+    {
+      "name": "David Scotson"
+    },
+    {
+      "name": "Bas Brands",
+      "url": "http://www.basbrands.nl"
+    },
+    {
+      "name": "Gareth J Barnard",
+      "url": "http://about.me/gjbarnard"
+    }
   ],
   "repository": {
     "type": "git",
@@ -26,5 +34,8 @@
     "grunt-text-replace": "~0.3.11",
     "grunt-exec": "~0.4.3"
   },
-  "license": "GPL-3.0+"
+  "license": "GPL-3.0+",
+  "devDependencies": {
+    "grunt-contrib-csslint": "^2.0.0"
+  }
 }

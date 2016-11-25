@@ -1,8 +1,8 @@
 @section-bg:                    #fff;
-@section-body-padding:          0px;
+@section-body-padding:          0;
 @section-heading-padding:       10px 15px;
 @section-footer-padding:        @section-heading-padding;
-@section-border-radius:         0px;
+@section-border-radius:         0;
 
 //** Border color for elements within sections
 @section-inner-border:          #ddd;
@@ -47,7 +47,7 @@
         .next {
             width: 10%;
             a {
-                background-color: #FFF;
+                background-color: inherit;
 
             }
         }
@@ -78,6 +78,7 @@
 
     ul.activities {
         margin: 0;
+        padding: 0;
         list-style: none;
         li > a {
             padding: 5px 10px;
@@ -153,6 +154,10 @@
         background-color: @section-default-heading-bg;
         border: 1px solid @section-default-border;
         margin-bottom: 3px;
+
+        &:hover {
+            text-decoration: none;
+        }
     }
     .onesection .section-heading {
         padding: 0;

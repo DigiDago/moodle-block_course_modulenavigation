@@ -198,6 +198,15 @@ class block_course_modulenavigation extends block_base {
                 $thissection->selected = true;
             }
 
+            // Show only titles
+            if (get_config('block_course_modulenavigation', 'toggletitles') == 2) {
+                // Show only titles
+                $thissection->onlytitles = true;
+            } else {
+                // Show  titles and contents
+                $thissection->onlytitles = false;
+            }
+
             if ($i == $selected && !$inactivity) {
                 $thissection->selected = true;
             }

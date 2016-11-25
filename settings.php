@@ -56,4 +56,15 @@ if ($ADMIN->fulltree) {
         2 => new lang_string('yes')   // Yes.
     );
     $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
+    // Option: Show only titles.
+    $name = 'block_course_modulenavigation/toggletitles';
+    $title = get_string('toggletitles', 'block_course_modulenavigation');
+    $description = get_string('toggletitles_desc', 'block_course_modulenavigation');
+    $default = 1;
+    $choices = array(
+        1 => new lang_string('no'), // No.
+        2 => new lang_string('yes')   // Yes.
+    );
+    $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 }
