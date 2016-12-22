@@ -104,7 +104,10 @@ class block_course_modulenavigation extends block_base {
         }
 
         if ($format instanceof format_digidagotabs) {
-            $sections = $format->tabs_get_sections();
+            // Only show the block inside activites of courses
+            if ($this->page->pagelayout == 'incourse') {
+                $sections = $format->tabs_get_sections();
+            }
         } else {
             $sections = $format->get_sections();
         }
