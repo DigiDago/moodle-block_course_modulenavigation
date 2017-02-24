@@ -103,7 +103,7 @@ class block_course_modulenavigation extends block_base {
             return $this->content;
         }
 
-        if ($format instanceof format_digidagotabs) {
+        if (($format instanceof format_digidagotabs) or ($format instanceof format_horizontaltabs)) {
             // Only show the block inside activites of courses
             if ($this->page->pagelayout == 'incourse') {
                 $sections = $format->tabs_get_sections();
@@ -118,7 +118,7 @@ class block_course_modulenavigation extends block_base {
 
         $context = context_course::instance($course->id);
 
-        if ($format instanceof format_digidagotabs) {
+        if (($format instanceof format_digidagotabs) or ($format instanceof format_horizontaltabs)) {
             $course = $format->get_course();
         }
         $modinfo = get_fast_modinfo($course);
