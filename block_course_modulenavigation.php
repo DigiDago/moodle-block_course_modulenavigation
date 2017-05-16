@@ -162,13 +162,8 @@ class block_course_modulenavigation extends block_base {
         foreach ($sections as $section) {
             $sectionnums[] = $section->section;
         }
-        $template->arrowpixurl = $OUTPUT->pix_url('arrow-down', 'block_course_modulenavigation');
-
         foreach ($sections as $section) {
             $i = $section->section;
-            if ($i > $course->numsections) {
-                break;
-            }
             if (!$section->uservisible) {
                 continue;
             }
