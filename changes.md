@@ -26,3 +26,8 @@ Version 3.4 (2016.10.07)
   Version 3.5 (2016.11.22)
   1. Compatibility with Moodle 3.2
   2. Add option to show only course titles
+
+ Version 3.6 (2017.06.20)
+
+  1. Check and update to Moodle version 3.3
+  2. Update plugin for MDL-57769 - Course formats: Attribute 'numsections' was removed from topics and weeks, other course formats may want to implement similar changes

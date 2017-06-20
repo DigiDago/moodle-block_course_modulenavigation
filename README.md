@@ -82,7 +82,7 @@ Any Problems, questions, suggestions
 ===================
 If you have a problem with this block, suggestions for improvement, drop an email at :
 - Clément PRUDHOMME :  contact@digidago.com
-- Github : https://github.com/clementpr/moodle_course_menunavigation/
+- Github : https://github.com/DigiDago/moodle-course_modulenavigation
 
 
 Languages and translation
