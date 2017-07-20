@@ -104,6 +104,10 @@ class block_course_modulenavigation extends block_base {
         }
 
         if (($format instanceof format_digidagotabs) or ($format instanceof format_horizontaltabs)) {
+            // Dont show the menu in a tab
+            if ($intab) {
+                return $this->content;
+            }
             // Only show the block inside activites of courses
             if ($this->page->pagelayout == 'incourse') {
                 $sections = $format->tabs_get_sections();
@@ -118,9 +122,6 @@ class block_course_modulenavigation extends block_base {
 
         $context = context_course::instance($course->id);
 
-        if (($format instanceof format_digidagotabs) or ($format instanceof format_horizontaltabs)) {
-            $course = $format->get_course();
-        }
         $modinfo = get_fast_modinfo($course);
 
         $template = new stdClass();
@@ -145,6 +146,28 @@ class block_course_modulenavigation extends block_base {
                                            JOIN {modules} md ON md.id = cm.module
                                            WHERE cm.id = ?", array($thiscontext->instanceid))) {
                 $myactivityid = $cm->id;
+            }
+        }
+
+        if (($format instanceof format_digidagotabs) or ($format instanceof format_horizontaltabs)) {
+            $coursesections = $DB->get_records('course_sections', array('course' => $course->id));
+            $mysection = 0;
+            foreach ($coursesections as $cs) {
+                $csmodules = explode(',', $cs->sequence);
+                if (in_array($myactivityid, $csmodules)) {
+                    $mysection = $cs->id;
+                }
+            }
+
+            if ($mysection) {
+                if ( $DB->get_records('format_digidagotabs_tabs', array('courseid' => $course->id, 
+                 'sectionid' => $mysection)) ||
+                    $DB->get_records('format_horizontaltabs_tabs', array('courseid' => $course->id, 
+                 'sectionid' => $mysection))) {
+                    // This is a module inside a tab of the Dynamic tabs course format.
+                    // Prevent showing of this menu
+                    return $this->content;
+                }
             }
         }
 
