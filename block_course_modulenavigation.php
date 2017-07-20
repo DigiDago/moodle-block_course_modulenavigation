@@ -76,8 +76,7 @@ class block_course_modulenavigation extends block_base {
      * @return stdClass block content info
      */
     public function get_content() {
-        global $DB;
-        global $OUTPUT;
+        global $DB, $OUTPUT, $PAGE;
         if (!is_null($this->content)) {
             return $this->content;
         }
@@ -90,6 +89,10 @@ class block_course_modulenavigation extends block_base {
         $this->content->text   = '';
 
         if (empty($this->instance)) {
+            return $this->content;
+        }
+
+        if ($PAGE->pagelayout == 'admin') {
             return $this->content;
         }
 
@@ -138,6 +141,7 @@ class block_course_modulenavigation extends block_base {
 
         $inactivity = false;
         $myactivityid = 0;
+
         if ($thiscontext->get_level_name() == get_string('activitymodule')) {
             // Uh-oh we are in a activity.
             $inactivity = true;
