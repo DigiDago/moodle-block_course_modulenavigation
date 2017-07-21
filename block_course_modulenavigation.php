@@ -107,11 +107,11 @@ class block_course_modulenavigation extends block_base {
         }
 
         if (($format instanceof format_digidagotabs) or ($format instanceof format_horizontaltabs)) {
-            // Dont show the menu in a tab
+            // Dont show the menu in a tab.
             if ($intab) {
                 return $this->content;
             }
-            // Only show the block inside activites of courses
+            // Only show the block inside activites of courses.
             if ($this->page->pagelayout == 'incourse') {
                 $sections = $format->tabs_get_sections();
             }
@@ -164,12 +164,12 @@ class block_course_modulenavigation extends block_base {
             }
 
             if ($mysection) {
-                if ( $DB->get_records('format_digidagotabs_tabs', array('courseid' => $course->id, 
+                if ( $DB->get_records('format_digidagotabs_tabs', array('courseid' => $course->id,
                  'sectionid' => $mysection)) ||
-                    $DB->get_records('format_horizontaltabs_tabs', array('courseid' => $course->id, 
+                    $DB->get_records('format_horizontaltabs_tabs', array('courseid' => $course->id,
                  'sectionid' => $mysection))) {
                     // This is a module inside a tab of the Dynamic tabs course format.
-                    // Prevent showing of this menu
+                    // Prevent showing of this menu.
                     return $this->content;
                 }
             }
