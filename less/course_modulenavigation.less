@@ -139,7 +139,7 @@
     }
 
     // Optional heading
-    .section-heading {
+    .module-navigation-section-heading {
         padding: @section-heading-padding;
         border-bottom: 1px solid transparent;
         .border-top-radius((@section-border-radius - 1));
@@ -159,7 +159,7 @@
             text-decoration: none;
         }
     }
-    .onesection .section-heading {
+    .onesection .module-navigation-section-heading {
         padding: 0;
     }
 
@@ -218,14 +218,14 @@
                 }
             }
         }
-        > .section-heading + .section-collapse > .list-group {
+        > .module-navigation-section-heading + .section-collapse > .list-group {
             .list-group-item:first-child {
                 .border-top-radius(0);
             }
         }
     }
     // Collapse space between when there's no additional content.
-    .section-heading + .list-group {
+    .module-navigation-section-heading + .list-group {
         .list-group-item:first-child {
             border-top-width: 0;
         }
@@ -253,7 +253,7 @@
             }
         }
 
-        .section-heading {
+        .module-navigation-section-heading {
             border-bottom: 0;
 
             + .section-collapse > .section-body,
@@ -273,7 +273,7 @@
     .section-variant(@border; @heading-text-color; @heading-bg-color; @heading-border) {
         border-color: @border;
 
-        & > .section-heading {
+        & > .module-navigation-section-heading {
             color: @heading-text-color;
             background-color: @heading-bg-color;
             border-color: @heading-border;
