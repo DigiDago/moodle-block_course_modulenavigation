@@ -76,8 +76,7 @@ class block_course_modulenavigation extends block_base {
      * @return stdClass block content info
      */
     public function get_content() {
-        global $DB;
-        global $OUTPUT;
+        global $DB, $OUTPUT, $PAGE;
         if (!is_null($this->content)) {
             return $this->content;
         }
@@ -93,6 +92,10 @@ class block_course_modulenavigation extends block_base {
             return $this->content;
         }
 
+        if ($PAGE->pagelayout == 'admin') {
+            return $this->content;
+        }
+
         $format = course_get_format($this->page->course);
         $course = $format->get_course(); // Needed to have numsections property available.
 
@@ -104,7 +107,11 @@ class block_course_modulenavigation extends block_base {
         }
 
         if (($format instanceof format_digidagotabs) or ($format instanceof format_horizontaltabs)) {
-            // Only show the block inside activites of courses
+            // Dont show the menu in a tab.
+            if ($intab) {
+                return $this->content;
+            }
+            // Only show the block inside activites of courses.
             if ($this->page->pagelayout == 'incourse') {
                 $sections = $format->tabs_get_sections();
             }
@@ -118,9 +125,6 @@ class block_course_modulenavigation extends block_base {
 
         $context = context_course::instance($course->id);
 
-        if (($format instanceof format_digidagotabs) or ($format instanceof format_horizontaltabs)) {
-            $course = $format->get_course();
-        }
         $modinfo = get_fast_modinfo($course);
 
         $template = new stdClass();
@@ -137,6 +141,7 @@ class block_course_modulenavigation extends block_base {
 
         $inactivity = false;
         $myactivityid = 0;
+
         if ($thiscontext->get_level_name() == get_string('activitymodule')) {
             // Uh-oh we are in a activity.
             $inactivity = true;
@@ -145,6 +150,28 @@ class block_course_modulenavigation extends block_base {
                                            JOIN {modules} md ON md.id = cm.module
                                            WHERE cm.id = ?", array($thiscontext->instanceid))) {
                 $myactivityid = $cm->id;
+            }
+        }
+
+        if (($format instanceof format_digidagotabs) or ($format instanceof format_horizontaltabs)) {
+            $coursesections = $DB->get_records('course_sections', array('course' => $course->id));
+            $mysection = 0;
+            foreach ($coursesections as $cs) {
+                $csmodules = explode(',', $cs->sequence);
+                if (in_array($myactivityid, $csmodules)) {
+                    $mysection = $cs->id;
+                }
+            }
+
+            if ($mysection) {
+                if ( $DB->get_records('format_digidagotabs_tabs', array('courseid' => $course->id,
+                 'sectionid' => $mysection)) ||
+                    $DB->get_records('format_horizontaltabs_tabs', array('courseid' => $course->id,
+                 'sectionid' => $mysection))) {
+                    // This is a module inside a tab of the Dynamic tabs course format.
+                    // Prevent showing of this menu.
+                    return $this->content;
+                }
             }
         }
 
