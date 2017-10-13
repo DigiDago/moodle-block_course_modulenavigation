@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Course module navigation version.
+ *
  * @package    block_course_modulenavigation
  * @copyright  2016 Digidago <contact@digidago.com><www.digidago.com>
  * @author     Bas Brands | DigiDago

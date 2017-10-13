@@ -14,7 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+
 /**
+ * Course module navigation.
+ *
  * @package    block_course_modulenavigation
  * @copyright  2016 Digidago <contact@digidago.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -26,24 +29,23 @@ require_once($CFG->dirroot.'/course/lib.php');
 require_once($CFG->dirroot.'/course/format/lib.php');
 
 /**
- * Course contents block generates a table of course contents based on the
- * section descriptions
+ * Course contents block generates a table of course contents based on the section descriptions.
+ *
+ * @package    block_course_modulenavigation
+ * @copyright  2016 Digidago <contact@digidago.com>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class block_course_modulenavigation extends block_base {
 
     /**
-     * Initializes the block, called by the constructor
+     * Initializes the block, called by the constructor.
      */
     public function init() {
         $this->title = get_string('pluginname', 'block_course_modulenavigation');
     }
 
-    public function has_config() {
-        return true;
-    }
-
     /**
-     * Amend the block instance after it is loaded
+     * Amend the block instance after it is loaded.
      */
     public function specialization() {
         if (!empty($this->config->blocktitle)) {
@@ -54,7 +56,7 @@ class block_course_modulenavigation extends block_base {
     }
 
     /**
-     * Which page types this block may appear on
+     * Which page types this block may appear on.
      * @return array
      */
     public function applicable_formats() {
@@ -62,8 +64,7 @@ class block_course_modulenavigation extends block_base {
     }
 
     /**
-     * Returns the navigation
-     *
+     * Returns the navigation.
      * @return navigation_node The navigation object to display
      */
     protected function get_navigation() {
@@ -72,7 +73,7 @@ class block_course_modulenavigation extends block_base {
     }
 
     /**
-     * Populate this block's content object
+     * Populate this block's content object.
      * @return stdClass block content info
      */
     public function get_content() {
@@ -223,12 +224,12 @@ class block_course_modulenavigation extends block_base {
                 $thissection->selected = true;
             }
 
-            // Show only titles
+            // Show only titles.
             if (get_config('block_course_modulenavigation', 'toggletitles') == 2) {
-                // Show only titles
+                // Show only titles.
                 $thissection->onlytitles = true;
             } else {
-                // Show  titles and contents
+                // Show  titles and contents.
                 $thissection->onlytitles = false;
             }
 
@@ -311,7 +312,8 @@ class block_course_modulenavigation extends block_base {
     }
 
     /**
-     * Function to get the previous and next values in an array
+     * Function to get the previous and next values in an array.
+     *
      * @param array array to search
      * @param string
      * @return object $pn with prev and next values.

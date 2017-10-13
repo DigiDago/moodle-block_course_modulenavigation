@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Defines the block strings
+ * Defines the block strings.
  *
  * @package    block_course_modulenavigation
  * @copyright  2016 Digidago <contact@digidago.com>
