@@ -20,19 +20,14 @@
  *
  * @package    block_course_modulenavigation
  * @copyright  2016 Digidago <contact@digidago.com>
- * @author     Bas Brands
+ * @author     Sylvain Renvenu | Nick Papoutsis | Bas Brands | DigiDago
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Extends the block instance coinfiguration.
- *
- * @package    block_course_modulenavigation
- * @copyright  2016 Digidago <contact@digidago.com>
- * @author     Bas Brands
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * Define the edit form for block course modulenavigation.
  */
 class block_course_modulenavigation_edit_form extends block_edit_form {
 

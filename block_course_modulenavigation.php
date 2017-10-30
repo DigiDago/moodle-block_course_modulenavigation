@@ -16,10 +16,11 @@
 
 
 /**
- * Course module navigation.
+ * Course contents block generates a table of course contents based on the section descriptions.
  *
  * @package    block_course_modulenavigation
  * @copyright  2016 Digidago <contact@digidago.com>
+ * @author     Sylvain Renvenu | Nick Papoutsis | Bas Brands | DigiDago
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -29,11 +30,7 @@ require_once($CFG->dirroot.'/course/lib.php');
 require_once($CFG->dirroot.'/course/format/lib.php');
 
 /**
- * Course contents block generates a table of course contents based on the section descriptions.
- *
- * @package    block_course_modulenavigation
- * @copyright  2016 Digidago <contact@digidago.com>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * Define the block course modulenavigation.
  */
 class block_course_modulenavigation extends block_base {
 
@@ -198,7 +195,6 @@ class block_course_modulenavigation extends block_base {
 
             if (!empty($section->name)) {
                 $title = format_string($section->name, true, array('context' => $context));
-
             } else {
                 $summary = file_rewrite_pluginfile_urls($section->summary, 'pluginfile.php', $context->id, 'course',
                     'section', $section->id);

@@ -19,23 +19,18 @@
  *
  * @package    block_course_modulenavigation
  * @copyright  2016 Digidago <contact@digidago.com>
- * @author     Bas Brands
+ * @author     Sylvain Renvenu | Nick Papoutsis | Bas Brands | DigiDago
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-/**
- * Renderer HTML for course module navigation.
- *
- * @package    block_course_modulenavigation
- * @copyright  2016 Digidago <contact@digidago.com>
- * @author     Bas Brands
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+/*
+ * Define render navigation
  */
 class block_course_modulenavigation_nav_renderer extends plugin_renderer_base {
     /*
-     * Render HTML.
+     * Render HTML template.
      */
     public function render_nav($template) {
         if (isset($template->config->onesection) && ($template->config->onesection == 1)) {
