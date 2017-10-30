@@ -1,7 +1,7 @@
 .block.block_course_modulenavigation .content {
-    white-space: normal;
-    padding: 5px;
     background-color: #fff;
+    padding: 5px;
+    white-space: normal;
 }
 .block.block_course_modulenavigation .pagination,
 .block.block_course_modulenavigation .allpagination {
