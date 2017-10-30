@@ -19,7 +19,6 @@
  *
  * @package    block_course_modulenavigation
  * @copyright  2016 Digidago <contact@digidago.com><www.digidago.com>
- * @author     Bas Brands | DigiDago
  * @author     Sylvain Renvenu | Nick Papoutsis | Bas Brands | DigiDago
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
