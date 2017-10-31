@@ -13,6 +13,11 @@
 
     You should have received a copy of the GNU General Public License
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+    @package    block_course_modulenavigation
+    @copyright  2016 Digidago <contact@digidago.com>
+    @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | DigiDago
+    @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 }}
 {{!
     @template block-course_modulenavigation/coursenave
@@ -46,7 +51,7 @@
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{number}}" aria-expanded="true" aria-controls="collapse{{number}}">
                   {{/onlytitles}}
                 {{/collapse}}
-                {{title}}
+                {{{title}}}
                 </a>
             </li>
             {{#collapse}}

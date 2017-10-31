@@ -1,6 +1,6 @@
 # moodle-block_course_modulenavigation
 
-[![Build Status](https://travis-ci.org/nikpap/moodle_course_menunavigation.svg?branch=master)](https://travis-ci.org/nikpap/moodle_course_menunavigation)
+[![Build Status](https://travis-ci.org/DigiDago/moodle-course_modulenavigation.svg?branch=master)](https://travis-ci.org/DigiDago/moodle-course_modulenavigation)
 
 Introduction
 ============

@@ -15,15 +15,23 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Renderer for modulenavigation.
+ *
  * @package    block_course_modulenavigation
  * @copyright  2016 Digidago <contact@digidago.com>
- * @author     Bas Brands
+ * @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | DigiDago
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
+/*
+ * Define render navigation
+ */
 class block_course_modulenavigation_nav_renderer extends plugin_renderer_base {
+    /*
+     * Render HTML template.
+     */
     public function render_nav($template) {
         if (isset($template->config->onesection) && ($template->config->onesection == 1)) {
             return $this->render_from_template('block_course_modulenavigation/coursenav_onesection', $template);

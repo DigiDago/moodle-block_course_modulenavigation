@@ -15,11 +15,11 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Defines the block strings
+ * Defines the block strings.
  *
  * @package    block_course_modulenavigation
  * @copyright  2016 Digidago <contact@digidago.com>
- * @author     Bas Brands
+ * @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | DigiDago
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

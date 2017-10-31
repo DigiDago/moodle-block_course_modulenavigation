@@ -15,21 +15,24 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ *
+ * Edit form for module navigation.
+ *
  * @package    block_course_modulenavigation
  * @copyright  2016 Digidago <contact@digidago.com>
- * @author     Bas Brands
+ * @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | DigiDago
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Extends the block instance coinfiguration
+ * Define the edit form for block course modulenavigation.
  */
 class block_course_modulenavigation_edit_form extends block_edit_form {
 
     /**
-     * Defines fields to add to the settings form
+     * Defines fields to add to the settings form.
      *
      * @param moodle_form $mform
      */
