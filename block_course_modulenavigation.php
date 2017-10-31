@@ -42,6 +42,13 @@ class block_course_modulenavigation extends block_base {
     }
 
     /**
+     *  Allow parameters in admin settings
+     */
+    public function has_config() {
+        return true;
+    }
+
+    /**
      * Amend the block instance after it is loaded.
      */
     public function specialization() {
