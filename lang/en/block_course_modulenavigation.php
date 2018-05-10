@@ -43,3 +43,4 @@ $string['togglecollapse'] = 'Collapse tabs';
 $string['togglecollapse_desc'] = 'Choose whether to display all tabs not collapsed';
 $string['toggletitles'] = 'Show only titles';
 $string['toggletitles_desc'] = 'Choose whether to display only titles or titles and content';
+$string['privacy:null_reason'] = 'The course module navigation block does not effect or store any user data';
