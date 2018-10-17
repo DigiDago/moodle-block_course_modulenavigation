@@ -247,7 +247,7 @@ class block_course_modulenavigation extends block_base {
                     if ( (get_config('block_course_modulenavigation', 'toggleshowlabels') == 1) && ($module->modname == 'label') ) {
                         continue;
                     }
-                    if (! $module->uservisible) {
+                    if (!$module->uservisible || !$module->visible || !$module->visibleoncoursepage) {
                         continue;
                     }
                     $thismod = new stdClass();
