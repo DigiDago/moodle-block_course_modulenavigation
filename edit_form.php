@@ -19,7 +19,7 @@
  * Edit form for module navigation.
  *
  * @package    block_course_modulenavigation
- * @copyright  2016 Digidago <contact@digidago.com>
+ * @copyright  2018 Digidago <contact@digidago.com>
  * @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | DigiDago
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -28,13 +28,20 @@ defined('MOODLE_INTERNAL') || die();
 
 /**
  * Define the edit form for block course modulenavigation.
+ *
+ * @package         block_course_modulenavigation
+ * @copyright       2018 Digidago <contact@digidago.com> <www.digidago.com>
+ * @author          Sylvain Revenu | Nick Papoutsis | Bas Brands | DigiDago
+ * @license         http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ *
  */
 class block_course_modulenavigation_edit_form extends block_edit_form {
 
     /**
      * Defines fields to add to the settings form.
      *
-     * @param moodle_form $mform
+     * @param object $mform
+     * @throws coding_exception
      */
     protected function specific_definition($mform) {
 
@@ -42,7 +49,7 @@ class block_course_modulenavigation_edit_form extends block_edit_form {
 
         $mform->addElement('text', 'config_blocktitle', get_string('config_blocktitle', 'block_course_modulenavigation'));
         $mform->setDefault('config_blocktitle', '');
-        $mform->setType('config_blocktitle', PARAM_MULTILANG);
+        $mform->setType('config_blocktitle', PARAM_TEXT);
 
         $mform->addHelpButton('config_blocktitle', 'config_blocktitle', 'block_course_modulenavigation');
 

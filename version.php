@@ -18,14 +18,14 @@
  * Course module navigation version.
  *
  * @package    block_course_modulenavigation
- * @copyright  2016 Digidago <contact@digidago.com><www.digidago.com>
+ * @copyright  2018 Digidago <contact@digidago.com><www.digidago.com>
  * @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | DigiDago
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component  = 'block_course_modulenavigation';
-$plugin->release    = '4.0';
-$plugin->version    = 2018101700;
+$plugin->release    = '5.0';
+$plugin->version    = 2018110912;
 $plugin->requires   = 2018051700; // Moodle 3.5 and above.
 $plugin->maturity   = MATURITY_STABLE;
