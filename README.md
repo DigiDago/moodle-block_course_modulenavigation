@@ -36,15 +36,6 @@ Maintainer
 Course module navigation was initialy developed by Bas Brand and was based on an request of Digidago (Clément PRUDHOMME). It is currently maintained by DigiDago.
 
 
-Required version of Moodle
-==========================
-This version works with Moodle version 2015111600.00 3.0 (Build: 20151116) and above within the 3.0 branch until the
-next release.
-
-Please ensure that your hardware and software complies with 'Requirements' in 'Installing Moodle' on
-'docs.moodle.org/30/en/Installing_Moodle'.
-
-
 Installation
 ============
  1. Ensure you have the version of Moodle as stated above in 'Required version of Moodle'.  
@@ -98,7 +89,4 @@ You can easily use .css to customize style of the bloc course module navigation.
 
 Us
 ==
-@copyright 2016 Digidago http://digidago.com/
-
-@author Bas Brands (http://sonsbeekmedia.nl/)
-@author Nick Papoutsis(http://nils.gr/)
+@copyright 2016 Digidago https://digidago.com/
