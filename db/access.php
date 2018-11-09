@@ -19,7 +19,7 @@
  * Capability definitions for block course module.
  *
  * @package    block_course_modulenavigation
- * @copyright  2016 Digidago <contact@digidago.com>
+ * @copyright  2018 Digidago <contact@digidago.com>
  * @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | DigiDago
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,10 +27,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $capabilities = array(
-
     'block/course_modulenavigation:addinstance' => array(
         'riskbitmask' => RISK_SPAM | RISK_XSS,
-
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
         'archetypes' => array(

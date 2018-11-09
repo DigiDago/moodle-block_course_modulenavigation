@@ -18,19 +18,24 @@
  * Grunt config.
  *
  * @package    block_course_modulenavigation
- * @copyright  2016 Digidago <contact@digidago.com><www.digidago.com>
+ * @copyright  2018 Digidago <contact@digidago.com><www.digidago.com>
  * @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | DigiDago
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
+"use strict";
 
 module.exports = function(grunt) {
-
+    // Load contrib tasks.
+    grunt.loadNpmTasks("grunt-sass");
+    grunt.loadNpmTasks("grunt-contrib-watch");
+    grunt.loadNpmTasks("grunt-text-replace");
+    grunt.loadNpmTasks("grunt-exec");
+    grunt.loadNpmTasks("grunt-stylelint");
     // Import modules.
-    var path = require('path');
-
+    let path = require('path');
+    const sass = require('node-sass');
     // PHP strings for exec task.
-    var moodleroot = path.dirname(path.dirname(__dirname)),
+    let moodleroot = path.dirname(path.dirname(__dirname)),
         configfile = '',
         decachephp = '',
         dirrootopt = grunt.option('dirroot') || process.env.MOODLE_DIR || '';
@@ -47,15 +52,20 @@ module.exports = function(grunt) {
     decachephp += 'theme_reset_all_caches();';
 
     grunt.initConfig({
-        less: {
+        sass: {
             // Compile moodle styles.
-            moodle: {
-                options: {
-                    compress: false
-                },
-                src: 'less/course_modulenavigation.less',
-                dest: 'styles.css'
+            options: {
+                implementation: sass,
+                sourceMap: true
+            },
+            dist: {
+                files: {
+                    'styles.css':'scss/*.scss'
+                }
             }
+        },
+        stylelint: {
+            all: ['scss/*.scss']
         },
         exec: {
             decache: {
@@ -69,38 +79,17 @@ module.exports = function(grunt) {
         },
         watch: {
             // Watch for any changes to less files and compile.
-            files: ["less/*.less"],
+            files: ["scss/*.scss"],
             tasks: ["compile"],
             options: {
                 spawn: false,
                 livereload: true
             }
-        },
-        csslint: {
-            strict: {
-                options: {
-                    import: 2
-                },
-                src: ['styles.css']
-            },
-            lax: {
-                options: {
-                    import: false
-                },
-                src: ['styles.css']
-            }
         }
     });
-
-    // Load contrib tasks.
-    grunt.loadNpmTasks("grunt-contrib-less");
-    grunt.loadNpmTasks("grunt-contrib-watch");
-    grunt.loadNpmTasks("grunt-text-replace");
-    grunt.loadNpmTasks("grunt-exec");
-    grunt.loadNpmTasks('grunt-contrib-csslint');
 
     // Register tasks.
     grunt.registerTask("default", ["watch"]);
     grunt.registerTask("decache", ["exec:decache"]);
-    grunt.registerTask("compile", ["less", "decache"]);
+    grunt.registerTask("compile", ["sass", "decache"]);
 };

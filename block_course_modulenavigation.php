@@ -14,14 +14,14 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-
 /**
  * Course contents block generates a table of course contents based on the section descriptions.
  *
  * @package    block_course_modulenavigation
- * @copyright  2016 Digidago <contact@digidago.com>
+ * @copyright  2018 Digidago <contact@digidago.com>
  * @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | DigiDago
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ *
  */
 
 defined('MOODLE_INTERNAL') || die();
@@ -31,6 +31,12 @@ require_once($CFG->dirroot.'/course/format/lib.php');
 
 /**
  * Define the block course modulenavigation.
+ *
+ * @package    block_course_modulenavigation
+ * @copyright  2018 Digidago <contact@digidago.com>
+ * @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | DigiDago
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ *
  */
 class block_course_modulenavigation extends block_base {
 
@@ -78,10 +84,14 @@ class block_course_modulenavigation extends block_base {
 
     /**
      * Populate this block's content object.
-     * @return stdClass block content info
+     * @return stdObject block content info
+     * @throws coding_exception
+     * @throws dml_exception
+     * @throws moodle_exception
      */
     public function get_content() {
-        global $DB, $OUTPUT, $PAGE;
+        global $DB, $PAGE;
+
         if (!is_null($this->content)) {
             return $this->content;
         }
@@ -111,12 +121,12 @@ class block_course_modulenavigation extends block_base {
             return $this->content;
         }
 
-        if (($format instanceof format_digidagotabs) or ($format instanceof format_horizontaltabs)) {
-            // Dont show the menu in a tab.
+        if (($format instanceof format_digidagotabs) || ($format instanceof format_horizontaltabs)) {
+            // Don't show the menu in a tab.
             if ($intab) {
                 return $this->content;
             }
-            // Only show the block inside activites of courses.
+            // Only show the block inside activities of courses.
             if ($this->page->pagelayout == 'incourse') {
                 $sections = $format->tabs_get_sections();
             }
@@ -158,7 +168,7 @@ class block_course_modulenavigation extends block_base {
             }
         }
 
-        if (($format instanceof format_digidagotabs) or ($format instanceof format_horizontaltabs)) {
+        if ($format instanceof format_digidagotabs || $format instanceof format_horizontaltabs) {
             $coursesections = $DB->get_records('course_sections', array('course' => $course->id));
             $mysection = 0;
             foreach ($coursesections as $cs) {
@@ -317,8 +327,8 @@ class block_course_modulenavigation extends block_base {
     /**
      * Function to get the previous and next values in an array.
      *
-     * @param array array to search
-     * @param string
+     * @param $array
+     * @param $current
      * @return object $pn with prev and next values.
      */
     private function get_prev_next($array, $current) {
