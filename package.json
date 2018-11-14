@@ -28,14 +28,17 @@
     "url": "https://github.com/bmbrands/theme_bootstrap/issues"
   },
   "dependencies": {
-    "grunt": "~0.4.2",
-    "grunt-contrib-less": "~0.9.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-text-replace": "~0.3.11",
-    "grunt-exec": "~0.4.3"
+    "grunt": "^1.0.3",
+    "grunt-contrib-watch": "^0.5.3",
+    "grunt-exec": "^0.4.7",
+    "grunt-sass": "^3.0.1",
+    "grunt-stylelint": "^0.10.1",
+    "grunt-text-replace": "^0.3.12",
+    "node-sass": "^4.9.3",
+    "stylelint": "^9.5.0"
   },
   "license": "GPL-3.0+",
   "devDependencies": {
-    "grunt-contrib-csslint": "^2.0.0"
+    "node-sass": "^4.9.2"
   }
 }

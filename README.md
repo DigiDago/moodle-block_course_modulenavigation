@@ -89,4 +89,4 @@ You can easily use .css to customize style of the bloc course module navigation.
 
 Us
 ==
-@copyright 2016 Digidago https://digidago.com/
+@copyright 2018 Digidago http://digidago.com/

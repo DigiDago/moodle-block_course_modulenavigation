@@ -17,17 +17,24 @@
 /**
  * Admin presets block main controller
  *
- * @package          blocks/admin_presets
- * @copyright        2017 Digidago <contact@digidago.com><www.digidago.com>
- * @author           Jordan Kesraoui | DigiDago
- * @orignalauthor    David Monllaó <david.monllao@urv.cat>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package         block_course_modulenavigation
+ * @copyright       2018 Digidago <contact@digidago.com> <www.digidago.com>
+ * @author          Sylvain Revneu | Jordan Kesraoui | DigiDago
+ * @license         http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 namespace block_course_modulenavigation\privacy;
 
+defined('MOODLE_INTERNAL') || die();
+
 use core_privacy\local\metadata\null_provider;
 
+/**
+ * Privacy Subsystem for block_course_modulenavigation implementing null_provider.
+ *
+ * @copyright  2018 Digidago <contact@digidago.com> <www.digidago.com>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class provider implements
     // This plugin does not store any personal user data.
     null_provider {
