@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Admin presets block main controller
+ * Course module navigation block main controller
  *
  * @package         block_course_modulenavigation
  * @copyright       2018 Digidago <contact@digidago.com> <www.digidago.com>
