@@ -179,10 +179,10 @@ class block_course_modulenavigation extends block_base {
             }
 
             if ($mysection) {
-                if ( $DB->get_records('format_digidagotabs_tabs', array('courseid' => $course->id,
-                 'sectionid' => $mysection)) ||
-                    $DB->get_records('format_horizontaltabs_tabs', array('courseid' => $course->id,
-                 'sectionid' => $mysection))) {
+                if (($format instanceof format_digidagotabs && $DB->get_records('format_digidagotabs_tabs', array('courseid' => $course->id,
+                 'sectionid' => $mysection))) ||
+                    ($format instanceof format_horizontaltabs && $DB->get_records('format_horizontaltabs_tabs', array('courseid' => $course->id,
+                 'sectionid' => $mysection)))) {
                     // This is a module inside a tab of the Dynamic tabs course format.
                     // Prevent showing of this menu.
                     return $this->content;
