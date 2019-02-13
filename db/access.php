@@ -15,27 +15,25 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- *
  * Capability definitions for block course module.
- *
  * @package    block_course_modulenavigation
- * @copyright  2018 Digidago <contact@digidago.com>
+ * @copyright  2019 Pimenko <contact@pimenko.com> <pimenko.com>
  * @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | DigiDago
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$capabilities = array(
-    'block/course_modulenavigation:addinstance' => array(
-        'riskbitmask' => RISK_SPAM | RISK_XSS,
-        'captype' => 'write',
+$capabilities = [
+    'block/course_modulenavigation:addinstance' => [
+        'riskbitmask'  => RISK_SPAM | RISK_XSS,
+        'captype'      => 'write',
         'contextlevel' => CONTEXT_BLOCK,
-        'archetypes' => array(
+        'archetypes'   => [
             'editingteacher' => CAP_ALLOW,
-            'manager' => CAP_ALLOW
-        ),
+            'manager'        => CAP_ALLOW
+        ],
 
         'clonepermissionsfrom' => 'moodle/site:manageblocks'
-    ),
-);
+    ],
+];

@@ -17,7 +17,7 @@
 /**
  * Course contents block generates a table of course contents based on the section descriptions.
  * @package    block_course_modulenavigation
- * @copyright  2018 Digidago <contact@digidago.com>
+ * @copyright  2019 Pimenko <contact@pimenko.com> <pimenko.com>
  * @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | DigiDago
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -30,7 +30,7 @@ require_once( $CFG->dirroot . '/course/format/lib.php' );
 /**
  * Define the block course modulenavigation.
  * @package    block_course_modulenavigation
- * @copyright  2018 Digidago <contact@digidago.com>
+ * @copyright  2019 Pimenko <contact@pimenko.com> <pimenko.com>
  * @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | DigiDago
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
