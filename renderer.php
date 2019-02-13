@@ -38,6 +38,7 @@ class block_course_modulenavigation_nav_renderer extends plugin_renderer_base {
      * Render HTML template.
      *
      * @param $template
+     *
      * @return bool|string
      * @throws moodle_exception
      */
