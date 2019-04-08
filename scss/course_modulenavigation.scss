@@ -1,14 +1,14 @@
-$section-bg:                    #fff;
-$section-body-padding:          0;
-$section-padding:       10px 15px;
-$section-border-radius:         0;
+$section-bg: #fff;
+$section-body-padding: 0;
+$section-padding: 10px 15px;
+$section-border-radius: 0;
 
 //** Border color for elements within sections
-$section-inner-border:          #ddd;
-$section-content-bg:            #f5f5f5;
+$section-inner-border: #ddd;
+$section-content-bg: #f5f5f5;
 
-$section-default-text:          #333;
-$section-default-color:        #ddd;
+$section-default-text: #333;
+$section-default-color: #ddd;
 
 .block.block_course_modulenavigation {
     .content {
@@ -16,6 +16,7 @@ $section-default-color:        #ddd;
         padding: 5px;
         background-color: $section-bg;
     }
+
     .pagination,
     .allpagination {
         margin: 0;
@@ -23,18 +24,21 @@ $section-default-color:        #ddd;
         width: 100%;
         display: table;
     }
+
     .pagination .prev,
     .allpagination .prev,
     .pagination .next,
     .allpagination .next {
         width: 10%;
     }
+
     .pagination .prev a,
     .allpagination .prev a,
     .pagination .next a,
     .allpagination .next a {
         background-color: inherit;
     }
+
     .pagination .sectionname,
     .allpagination .sectionname,
     .pagination .allsectionames,
@@ -43,15 +47,18 @@ $section-default-color:        #ddd;
         border-radius: $section-border-radius;
         border: 0;
     }
+
     .pagination .expand-arrow,
     .allpagination .expand-arrow {
         width: 18px;
         float: right;
     }
+
     .pagination > li,
     .allpagination > li {
         display: table-cell;
     }
+
     .pagination > li a,
     .allpagination > li a {
         padding: $section-body-padding;
@@ -61,28 +68,34 @@ $section-default-color:        #ddd;
         border-radius: $section-border-radius;
         border: 0;
     }
+
     ul.activities {
         margin: 0;
         padding: $section-body-padding;
         list-style: none;
+
         li > a {
             padding: 5px 10px;
             border-bottom: 1px solid #eee;
             display: block;
+
             &:hover,
             &.active {
                 text-decoration: none;
                 background-color: #eee;
             }
         }
+
         .completionbox {
             position: relative;
             display: table-cell;
             width: 18px;
         }
+
         .activityname {
             display: table-cell;
         }
+
         .completioncheck {
             position: absolute;
             top: 50%;
@@ -92,14 +105,17 @@ $section-default-color:        #ddd;
             height: 10px;
             border-radius: 5px;
             display: inline-block;
+
             &.incomplete {
                 border: 1px solid #ccc;
             }
+
             &.completed {
                 border: 1px solid #5cb85c;
                 background-color: #5cb85c;
             }
         }
+
         .modulenavigationlabel {
             pointer-events: none;
             cursor: default;
@@ -107,41 +123,50 @@ $section-default-color:        #ddd;
             font-weight: 700;
         }
     }
+
     .section {
         margin-bottom: 20px;
         background-color: $section-bg;
         border: 1px solid transparent;
         border-radius: $section-border-radius;
     }
+
     .section-body {
         padding: $section-body-padding;
     }
+
     .module-navigation-section-heading {
         padding: $section-padding;
         border-bottom: 1px solid transparent;
         border-top-right-radius: 0;
         border-top-left-radius: 0;
+
         > .dropdown .dropdown-toggle {
             color: inherit;
         }
     }
+
     .tocourse {
         display: block;
         padding: $section-padding;
         background-color: $section-content-bg;
         border: 1px solid $section-default-color;
         margin-bottom: 3px;
+
         &:hover {
             text-decoration: none;
         }
     }
+
     .onesection .module-navigation-section-heading {
         padding: $section-body-padding;
     }
+
     .section-title {
         margin-top: 0;
         margin-bottom: 0;
         color: inherit;
+
         > {
             a,
             .small,
@@ -150,6 +175,7 @@ $section-default-color:        #ddd;
             }
         }
     }
+
     .section-footer {
         padding: $section-padding;
         background-color: $section-content-bg;
@@ -157,48 +183,59 @@ $section-default-color:        #ddd;
         border-bottom-right-radius: 0;
         border-bottom-left-radius: 0;
     }
+
     .section > {
         .list-group,
         .section-collapse > .list-group {
             margin-bottom: 0;
         }
+
         .list-group .list-group-item,
         .section-collapse > .list-group .list-group-item {
             border-width: 1px 0;
             border-radius: $section-border-radius;
         }
+
         .list-group:first-child .list-group-item:first-child,
         .section-collapse > .list-group:first-child .list-group-item:first-child {
             border-top: 0;
             border-top-right-radius: 0;
             border-top-left-radius: 0;
         }
+
         .list-group:last-child .list-group-item:last-child,
         .section-collapse > .list-group:last-child .list-group-item:last-child {
             border-bottom: 0;
             border-bottom-right-radius: 0;
             border-bottom-left-radius: 0;
         }
+
         .module-navigation-section-heading + .section-collapse > .list-group .list-group-item:first-child {
             border-top-right-radius: 0;
             border-top-left-radius: 0;
         }
     }
+
     .module-navigation-section-heading + .list-group .list-group-item:first-child,
     .list-group + .section-footer {
         border-top-width: 0;
     }
+
     .section-group {
         margin-bottom: 20px;
+
         .section {
             margin-bottom: 0;
             border-radius: $section-border-radius;
+
             + .section {
                 margin-top: 5px;
             }
         }
+
         .module-navigation-section-heading {
             border-bottom: 0;
+
             + .section-collapse > {
                 .section-body,
                 .list-group {
@@ -206,28 +243,35 @@ $section-default-color:        #ddd;
                 }
             }
         }
+
         .section-footer {
             border-top: 0;
+
             + .section-collapse .section-body {
                 border-bottom: 1px solid $section-default-color;
             }
         }
     }
+
     .section-default {
         border-color: $section-default-color;
+
         > {
             .module-navigation-section-heading {
                 color: #333;
                 background-color: $section-content-bg;
                 border-color: $section-default-color;
+
                 + .section-collapse > .section-body {
                     border-top-color: $section-default-color;
                 }
+
                 .badge {
                     color: $section-content-bg;
                     background-color: #333;
                 }
             }
+
             .section-footer + .section-collapse > .section-body {
                 border-bottom-color: $section-default-color;
             }

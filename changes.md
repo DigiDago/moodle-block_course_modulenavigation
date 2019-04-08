@@ -31,3 +31,13 @@ Version 3.4 (2016.10.07)
 
   1. Check and update to Moodle version 3.3
   2. Update plugin for MDL-57769 - Course formats: Attribute 'numsections' was removed from topics and weeks, other course formats may want to implement similar changes
+
+Version 4.0 (2018.11.14)
+
+ 1. Moodle 3.6 compatible
+ 2. Fix some minor issues
+ 
+ Version 4.1 (2019.02.13)
+
+ 1. Fix bug with a critical issue
+ 2. Review indent and update code doc

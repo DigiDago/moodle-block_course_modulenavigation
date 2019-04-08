@@ -16,27 +16,23 @@
 
 /**
  * Course contents block generates a table of course contents based on the section descriptions.
- *
  * @package    block_course_modulenavigation
- * @copyright  2018 Digidago <contact@digidago.com>
+ * @copyright  2019 Pimenko <contact@pimenko.com> <pimenko.com>
  * @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | DigiDago
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- *
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot.'/course/lib.php');
-require_once($CFG->dirroot.'/course/format/lib.php');
+require_once( $CFG->dirroot . '/course/lib.php' );
+require_once( $CFG->dirroot . '/course/format/lib.php' );
 
 /**
  * Define the block course modulenavigation.
- *
  * @package    block_course_modulenavigation
- * @copyright  2018 Digidago <contact@digidago.com>
+ * @copyright  2019 Pimenko <contact@pimenko.com> <pimenko.com>
  * @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | DigiDago
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- *
  */
 class block_course_modulenavigation extends block_base {
 
@@ -44,7 +40,10 @@ class block_course_modulenavigation extends block_base {
      * Initializes the block, called by the constructor.
      */
     public function init() {
-        $this->title = get_string('pluginname', 'block_course_modulenavigation');
+        $this->title = get_string(
+            'pluginname',
+            'block_course_modulenavigation'
+        );
     }
 
     /**
@@ -61,7 +60,10 @@ class block_course_modulenavigation extends block_base {
         if (!empty($this->config->blocktitle)) {
             $this->title = $this->config->blocktitle;
         } else {
-            $this->title = get_string('config_blocktitle_default', 'block_course_modulenavigation');
+            $this->title = get_string(
+                'config_blocktitle_default',
+                'block_course_modulenavigation'
+            );
         }
     }
 
@@ -70,7 +72,10 @@ class block_course_modulenavigation extends block_base {
      * @return array
      */
     public function applicable_formats() {
-        return array('site-index' => true, 'course-view-*' => true);
+        return [
+            'site-index'    => true,
+            'course-view-*' => true
+        ];
     }
 
     /**
@@ -79,12 +84,12 @@ class block_course_modulenavigation extends block_base {
      */
     protected function get_navigation() {
         $this->page->navigation->initialise();
-        return clone($this->page->navigation);
+        return clone( $this->page->navigation );
     }
 
     /**
      * Populate this block's content object.
-     * @return stdObject block content info
+     * @return stdClass|stdObject
      * @throws coding_exception
      * @throws dml_exception
      * @throws moodle_exception
@@ -96,10 +101,18 @@ class block_course_modulenavigation extends block_base {
             return $this->content;
         }
 
-        $selected = optional_param('section', null, PARAM_INT);
-        $intab = optional_param('dtab', null, PARAM_TEXT);
+        $selected = optional_param(
+            'section',
+            null,
+            PARAM_INT
+        );
+        $intab    = optional_param(
+            'dtab',
+            null,
+            PARAM_TEXT
+        );
 
-        $this->content = new stdClass();
+        $this->content         = new stdClass();
         $this->content->footer = '';
         $this->content->text   = '';
 
@@ -116,12 +129,15 @@ class block_course_modulenavigation extends block_base {
 
         if (!$format->uses_sections()) {
             if (debugging()) {
-                $this->content->text = get_string('notusingsections', 'block_course_modulenavigation');
+                $this->content->text = get_string(
+                    'notusingsections',
+                    'block_course_modulenavigation'
+                );
             }
             return $this->content;
         }
 
-        if (($format instanceof format_digidagotabs) || ($format instanceof format_horizontaltabs)) {
+        if (( $format instanceof format_digidagotabs ) || ( $format instanceof format_horizontaltabs )) {
             // Don't show the menu in a tab.
             if ($intab) {
                 return $this->content;
@@ -150,39 +166,63 @@ class block_course_modulenavigation extends block_base {
             $template->completionon = 'completion';
         }
 
-        $completionok = array(COMPLETION_COMPLETE, COMPLETION_COMPLETE_PASS);
+        $completionok = [
+            COMPLETION_COMPLETE,
+            COMPLETION_COMPLETE_PASS
+        ];
 
         $thiscontext = context::instance_by_id($this->page->context->id);
 
-        $inactivity = false;
+        $inactivity   = false;
         $myactivityid = 0;
 
         if ($thiscontext->get_level_name() == get_string('activitymodule')) {
             // Uh-oh we are in a activity.
             $inactivity = true;
-            if ($cm = $DB->get_record_sql("SELECT cm.*, md.name AS modname
+            if ($cm = $DB->get_record_sql(
+                "SELECT cm.*, md.name AS modname
                                            FROM {course_modules} cm
                                            JOIN {modules} md ON md.id = cm.module
-                                           WHERE cm.id = ?", array($thiscontext->instanceid))) {
+                                           WHERE cm.id = ?",
+                [ $thiscontext->instanceid ]
+            )) {
                 $myactivityid = $cm->id;
             }
         }
 
         if ($format instanceof format_digidagotabs || $format instanceof format_horizontaltabs) {
-            $coursesections = $DB->get_records('course_sections', array('course' => $course->id));
-            $mysection = 0;
+            $coursesections = $DB->get_records(
+                'course_sections',
+                [ 'course' => $course->id ]
+            );
+            $mysection      = 0;
             foreach ($coursesections as $cs) {
-                $csmodules = explode(',', $cs->sequence);
-                if (in_array($myactivityid, $csmodules)) {
+                $csmodules = explode(
+                    ',',
+                    $cs->sequence
+                );
+                if (in_array(
+                    $myactivityid,
+                    $csmodules
+                )) {
                     $mysection = $cs->id;
                 }
             }
 
             if ($mysection) {
-                if ( $DB->get_records('format_digidagotabs_tabs', array('courseid' => $course->id,
-                 'sectionid' => $mysection)) ||
-                    $DB->get_records('format_horizontaltabs_tabs', array('courseid' => $course->id,
-                 'sectionid' => $mysection))) {
+                if (( $format instanceof format_digidagotabs && $DB->get_records(
+                            'format_digidagotabs_tabs',
+                            [
+                                'courseid'  => $course->id,
+                                'sectionid' => $mysection
+                            ]
+                        ) ) || ( $format instanceof format_horizontaltabs && $DB->get_records(
+                            'format_horizontaltabs_tabs',
+                            [
+                                'courseid'  => $course->id,
+                                'sectionid' => $mysection
+                            ]
+                        ) )) {
                     // This is a module inside a tab of the Dynamic tabs course format.
                     // Prevent showing of this menu.
                     return $this->content;
@@ -194,13 +234,16 @@ class block_course_modulenavigation extends block_base {
 
         if (count($sections) > 1) {
             $template->hasprevnext = true;
-            $template->hasnext = true;
-            $template->hasprev = true;
+            $template->hasnext     = true;
+            $template->hasprev     = true;
         }
 
-        $courseurl = new moodle_url('/course/view.php', array('id' => $course->id));
+        $courseurl           = new moodle_url(
+            '/course/view.php',
+            [ 'id' => $course->id ]
+        );
         $template->courseurl = $courseurl->out();
-        $sectionnums = array();
+        $sectionnums         = [];
         foreach ($sections as $section) {
             $sectionnums[] = $section->section;
         }
@@ -211,21 +254,41 @@ class block_course_modulenavigation extends block_base {
             }
 
             if (!empty($section->name)) {
-                $title = format_string($section->name, true, array('context' => $context));
+                $title = format_string(
+                    $section->name,
+                    true,
+                    [ 'context' => $context ]
+                );
             } else {
-                $summary = file_rewrite_pluginfile_urls($section->summary, 'pluginfile.php', $context->id, 'course',
-                    'section', $section->id);
-                $summary = format_text($summary, $section->summaryformat, array('para' => false, 'context' => $context));
-                $title = $format->get_section_name($section);
+                $summary = file_rewrite_pluginfile_urls(
+                    $section->summary,
+                    'pluginfile.php',
+                    $context->id,
+                    'course',
+                    'section',
+                    $section->id
+                );
+                $summary = format_text(
+                    $summary,
+                    $section->summaryformat,
+                    [
+                        'para'    => false,
+                        'context' => $context
+                    ]
+                );
+                $title   = $format->get_section_name($section);
             }
 
-            $thissection = new stdClass();
-            $thissection->number = $i;
-            $thissection->title = $title;
-            $thissection->url = $format->get_view_url($section);
+            $thissection           = new stdClass();
+            $thissection->number   = $i;
+            $thissection->title    = $title;
+            $thissection->url      = $format->get_view_url($section);
             $thissection->selected = false;
 
-            if (get_config('block_course_modulenavigation', 'toggleclickontitle') == 2) {
+            if (get_config(
+                    'block_course_modulenavigation',
+                    'toggleclickontitle'
+                ) == 2) {
                 // Display the menu.
                 $thissection->collapse = true;
             } else {
@@ -233,12 +296,18 @@ class block_course_modulenavigation extends block_base {
                 $thissection->collapse = false;
             }
 
-            if (get_config('block_course_modulenavigation', 'togglecollapse') == 2) {
+            if (get_config(
+                    'block_course_modulenavigation',
+                    'togglecollapse'
+                ) == 2) {
                 $thissection->selected = true;
             }
 
             // Show only titles.
-            if (get_config('block_course_modulenavigation', 'toggletitles') == 2) {
+            if (get_config(
+                    'block_course_modulenavigation',
+                    'toggletitles'
+                ) == 2) {
                 // Show only titles.
                 $thissection->onlytitles = true;
             } else {
@@ -250,11 +319,14 @@ class block_course_modulenavigation extends block_base {
                 $thissection->selected = true;
             }
 
-            $thissection->modules = array();
+            $thissection->modules = [];
             if (!empty($modinfo->sections[$i])) {
                 foreach ($modinfo->sections[$i] as $modnumber) {
                     $module = $modinfo->cms[$modnumber];
-                    if ( (get_config('block_course_modulenavigation', 'toggleshowlabels') == 1) && ($module->modname == 'label') ) {
+                    if (( get_config(
+                                'block_course_modulenavigation',
+                                'toggleshowlabels'
+                            ) == 1 ) && ( $module->modname == 'label' )) {
                         continue;
                     }
                     if (!$module->uservisible || !$module->visible || !$module->visibleoncoursepage) {
@@ -265,14 +337,18 @@ class block_course_modulenavigation extends block_base {
                     if ($inactivity) {
                         if ($myactivityid == $module->id) {
                             $thissection->selected = true;
-                            $thismod->active = 'active';
+                            $thismod->active       = 'active';
                         }
                     }
 
-                    $thismod->name = format_string($module->name, true, array('context' => $context));
-                    $thismod->url = $module->url;
+                    $thismod->name = format_string(
+                        $module->name,
+                        true,
+                        [ 'context' => $context ]
+                    );
+                    $thismod->url  = $module->url;
                     if ($module->modname == 'label') {
-                        $thismod->url = '';
+                        $thismod->url   = '';
                         $thismod->label = 'true';
                     }
                     $hascompletion = $completioninfo->is_enabled($module);
@@ -280,21 +356,36 @@ class block_course_modulenavigation extends block_base {
                         $thismod->completeclass = 'incomplete';
                     }
 
-                    $completiondata = $completioninfo->get_data($module, true);
-                    if (in_array($completiondata->completionstate, $completionok)) {
+                    $completiondata = $completioninfo->get_data(
+                        $module,
+                        true
+                    );
+                    if (in_array(
+                        $completiondata->completionstate,
+                        $completionok
+                    )) {
                         $thismod->completeclass = 'completed';
                     }
                     $thissection->modules[] = $thismod;
                 }
-                $thissection->hasmodules = (count($thissection->modules) > 0);
-                $template->sections[] = $thissection;
+                $thissection->hasmodules = ( count($thissection->modules) > 0 );
+                $template->sections[]    = $thissection;
             }
 
             if ($thissection->selected) {
 
-                $pn = $this->get_prev_next($sectionnums, $thissection->number);
+                $pn = $this->get_prev_next(
+                    $sectionnums,
+                    $thissection->number
+                );
 
-                $courseurl = new moodle_url('/course/view.php', array('id' => $course->id, 'section' => $i));
+                $courseurl           = new moodle_url(
+                    '/course/view.php',
+                    [
+                        'id'      => $course->id,
+                        'section' => $i
+                    ]
+                );
                 $template->courseurl = $courseurl->out();
 
                 if ($pn->next === false) {
@@ -304,13 +395,31 @@ class block_course_modulenavigation extends block_base {
                     $template->hasprev = false;
                 }
 
-                $prevurl = new moodle_url('/course/view.php', array('id' => $course->id, 'section' => $pn->prev));
+                $prevurl           = new moodle_url(
+                    '/course/view.php',
+                    [
+                        'id'      => $course->id,
+                        'section' => $pn->prev
+                    ]
+                );
                 $template->prevurl = $prevurl->out(false);
 
-                $currurl = new moodle_url('/course/view.php', array('id' => $course->id, 'section' => $thissection->number));
+                $currurl           = new moodle_url(
+                    '/course/view.php',
+                    [
+                        'id'      => $course->id,
+                        'section' => $thissection->number
+                    ]
+                );
                 $template->currurl = $currurl->out(false);
 
-                $nexturl = new moodle_url('/course/view.php', array('id' => $course->id, 'section' => $pn->next));
+                $nexturl           = new moodle_url(
+                    '/course/view.php',
+                    [
+                        'id'      => $course->id,
+                        'section' => $pn->next
+                    ]
+                );
                 $template->nexturl = $nexturl->out(false);
             }
         }
@@ -318,9 +427,12 @@ class block_course_modulenavigation extends block_base {
             $template->inactivity = true;
         }
         $template->coursename = $course->fullname;
-        $template->config = $this->config;
-        $renderer = $this->page->get_renderer('block_course_modulenavigation', 'nav');
-        $this->content->text = $renderer->render_nav($template);
+        $template->config     = $this->config;
+        $renderer             = $this->page->get_renderer(
+            'block_course_modulenavigation',
+            'nav'
+        );
+        $this->content->text  = $renderer->render_nav($template);
         return $this->content;
     }
 
@@ -329,7 +441,8 @@ class block_course_modulenavigation extends block_base {
      *
      * @param $array
      * @param $current
-     * @return object $pn with prev and next values.
+     *
+     * @return stdClass
      */
     private function get_prev_next($array, $current) {
         $pn = new stdClass();

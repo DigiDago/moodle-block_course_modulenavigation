@@ -18,13 +18,13 @@
  * Grunt config.
  *
  * @package    block_course_modulenavigation
- * @copyright  2018 Digidago <contact@digidago.com><www.digidago.com>
+ * @copyright  2019 Pimenko <contact@pimenko.com> <pimenko.com>
  * @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | DigiDago
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 "use strict";
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
     // Load contrib tasks.
     grunt.loadNpmTasks("grunt-sass");
     grunt.loadNpmTasks("grunt-contrib-watch");
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'styles.css':'scss/*.scss'
+                    'styles.css': 'scss/*.scss'
                 }
             }
         },
@@ -70,7 +70,7 @@ module.exports = function(grunt) {
         exec: {
             decache: {
                 cmd: 'php -r "' + decachephp + '"',
-                callback: function(error) {
+                callback: function (error) {
                     if (!error) {
                         grunt.log.writeln("Moodle theme cache reset.");
                     }

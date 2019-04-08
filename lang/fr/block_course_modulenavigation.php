@@ -16,31 +16,30 @@
 
 /**
  * Defines the block strings.
- *
  * @package    block_course_modulenavigation
- * @copyright  2018 Digidago <contact@digidago.com>
+ * @copyright  2019 Pimenko <contact@pimenko.com> <pimenko.com>
  * @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | DigiDago
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['config_blocktitle'] = 'Titre du block';
-$string['config_blocktitle_default'] = 'Sommaire';
-$string['config_blocktitle_help'] = 'Laisser ce champ vide pour utiliser le nom par défaut comme titre du block. Si vous ajoutez un tittre ici, il sera utilisée à la place de celui par défaut.';
-$string['config_onesection'] = 'Afficher uniquement dans le block la section active';
-$string['config_onesection_label'] = 'Si cette option est activé, une seule section (celle qui est active) sera affichée. Si cette option est désactivée, le block sera affiché comme un menu accordéon avec toutes les sections';
+$string['config_blocktitle']                   = 'Titre du block';
+$string['config_blocktitle_default']           = 'Sommaire';
+$string['config_blocktitle_help']              = 'Laisser ce champ vide pour utiliser le nom par défaut comme titre du block. Si vous ajoutez un tittre ici, il sera utilisée à la place de celui par défaut.';
+$string['config_onesection']                   = 'Afficher uniquement dans le block la section active';
+$string['config_onesection_label']             = 'Si cette option est activé, une seule section (celle qui est active) sera affichée. Si cette option est désactivée, le block sera affiché comme un menu accordéon avec toutes les sections';
 $string['course_modulenavigation:addinstance'] = 'Ajouter un nouveau block de sommaire du cours (course contents block)';
-$string['notusingsections'] = 'Ce format de cours n&rsquo;utilise pas de section. ';
-$string['pluginname'] = 'Sommaire du cours';
-$string['toggleclickontitle'] = 'En cliquant sur le titre';
-$string['toggleclickontitle_desc'] = "Afficher le menu ou aller à la page";
-$string['toggleclickontitle_menu'] = 'Afficher le menu';
-$string['toggleclickontitle_page'] = 'Aller à la page';
-$string['toggleshowlabels'] = 'Afficher les étiquettes';
-$string['toggleshowlabels_desc'] = 'Choisir d\'afficher ou non les étiquettes';
-$string['togglecollapse'] = 'Déplier les tabs';
-$string['togglecollapse_desc'] = 'Choisir de déplier tous les tabs par défaut';
-$string['toggletitles'] = 'Afficher les titres';
-$string['toggletitles_desc'] = 'Choisir d\'afficher que les titres ou les titres et le contenu';
-$string['privacy:null_reason'] = 'Le bloc sommaire du cours affiche seulement des données enregistrées à d\'autres endroits';
+$string['notusingsections']                    = 'Ce format de cours n&rsquo;utilise pas de section. ';
+$string['pluginname']                          = 'Sommaire du cours';
+$string['toggleclickontitle']                  = 'En cliquant sur le titre';
+$string['toggleclickontitle_desc']             = "Afficher le menu ou aller à la page";
+$string['toggleclickontitle_menu']             = 'Afficher le menu';
+$string['toggleclickontitle_page']             = 'Aller à la page';
+$string['toggleshowlabels']                    = 'Afficher les étiquettes';
+$string['toggleshowlabels_desc']               = 'Choisir d\'afficher ou non les étiquettes';
+$string['togglecollapse']                      = 'Déplier les tabs';
+$string['togglecollapse_desc']                 = 'Choisir de déplier tous les tabs par défaut';
+$string['toggletitles']                        = 'Afficher les titres';
+$string['toggletitles_desc']                   = 'Choisir d\'afficher que les titres ou les titres et le contenu';
+$string['privacy:null_reason']                 = 'Le bloc sommaire du cours affiche seulement des données enregistrées à d\'autres endroits';
