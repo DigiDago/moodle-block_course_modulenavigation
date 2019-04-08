@@ -16,8 +16,9 @@
 
 /**
  * Renderer for modulenavigation.
+ *
  * @package    block_course_modulenavigation
- * @copyright  2019 Pimenko <contact@pimenko.com> <pimenko.com>
+ * @copyright  2018 Digidago <contact@digidago.com>
  * @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | DigiDago
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -26,8 +27,9 @@ defined('MOODLE_INTERNAL') || die();
 
 /**
  * Define render navigation
+ *
  * @package    block_course_modulenavigation
- * @copyright  2019 Pimenko <contact@pimenko.com> <pimenko.com>
+ * @copyright  2018 Digidago <contact@digidago.com>
  * @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | DigiDago
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -36,21 +38,14 @@ class block_course_modulenavigation_nav_renderer extends plugin_renderer_base {
      * Render HTML template.
      *
      * @param $template
-     *
      * @return bool|string
      * @throws moodle_exception
      */
     public function render_nav($template) {
-        if (isset($template->config->onesection) && ( $template->config->onesection == 1 )) {
-            return $this->render_from_template(
-                'block_course_modulenavigation/coursenav_onesection',
-                $template
-            );
+        if (isset($template->config->onesection) && ($template->config->onesection == 1)) {
+            return $this->render_from_template('block_course_modulenavigation/coursenav_onesection', $template);
         } else {
-            return $this->render_from_template(
-                'block_course_modulenavigation/coursenav',
-                $template
-            );
+            return $this->render_from_template('block_course_modulenavigation/coursenav', $template);
         }
     }
 }
