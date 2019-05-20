@@ -24,7 +24,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'block_course_modulenavigation';
-$plugin->release   = '4.1';
-$plugin->version   = 2018110912;
+$plugin->release   = '4.0';
+$plugin->version   = 2019052015;
 $plugin->requires  = 2018051700; // Moodle 3.5 and above.
 $plugin->maturity  = MATURITY_STABLE;
