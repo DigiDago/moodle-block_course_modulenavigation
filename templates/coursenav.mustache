@@ -41,19 +41,17 @@
                     <ul class="allpagination">
                         <li class="allsectionnames">
                             {{#collapse}}
-                            <a href="{{{url}}}">
+                            <a href="{{{url}}}">{{{title}}}</a>
                             {{/collapse}}
                             {{^collapse}}
                                 {{#onlytitles}}
-                                <a href="{{{url}}}">
+                                    <a href="{{{url}}}">{{{title}}}</a>
                                 {{/onlytitles}}
                                 {{^onlytitles}}
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{number}}"
-                                   aria-expanded="true" aria-controls="collapse{{number}}">
+                                   aria-expanded="true" aria-controls="collapse{{number}}">{{{title}}}</a>
                                 {{/onlytitles}}
                             {{/collapse}}
-                            {{{title}}}
-                        </a>
                         </li>
                         {{#collapse}}
                             <li class="arrowaccordion">

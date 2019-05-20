@@ -68,7 +68,8 @@
     display: block;
 }
 
-.block.block_course_modulenavigation ul.activities li > a:hover, .block.block_course_modulenavigation ul.activities li > a.active {
+.block.block_course_modulenavigation ul.activities li > a:hover,
+.block.block_course_modulenavigation ul.activities li > a.active {
     text-decoration: none;
     background-color: #eee;
 }
