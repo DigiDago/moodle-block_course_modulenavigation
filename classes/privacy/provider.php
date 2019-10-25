@@ -18,7 +18,7 @@
  * Course module navigation block main controller
  * @package         block_course_modulenavigation
  * @copyright       2019 Pimenko <contact@pimenko.com> <pimenko.com>
- * @author          Sylvain Revneu | Jordan Kesraoui | DigiDago
+ * @author          Sylvain Revneu | Jordan Kesraoui | Pimenko
  * @license         http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

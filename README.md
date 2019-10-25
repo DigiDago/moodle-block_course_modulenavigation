@@ -72,7 +72,7 @@ See Changes.md.
 Any Problems, questions, suggestions
 ===================
 If you have a problem with this block, suggestions for improvement, drop an email at :
-- Clément PRUDHOMME :  contact@digidago.com
+- Clément PRUDHOMME :  contact@Pimenko.com
 - Github : https://github.com/DigiDago/moodle-course_modulenavigation
 
 
@@ -89,4 +89,4 @@ You can easily use .css to customize style of the bloc course module navigation.
 
 Us
 ==
-@copyright 2018 Digidago http://digidago.com/
+@copyright 2018 Pimenko http://pimenko.com/
