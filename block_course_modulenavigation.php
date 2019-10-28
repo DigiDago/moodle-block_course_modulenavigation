@@ -366,7 +366,8 @@ class block_course_modulenavigation extends block_base {
                 $thissection->hasmodules = (count($thissection->modules) > 0);
                 $template->sections[] = $thissection;
             }
-
+            var_dump(json_encode($template->sections[1]));
+            //die;
             if ($thissection->selected) {
 
                 $pn = $this->get_prev_next(

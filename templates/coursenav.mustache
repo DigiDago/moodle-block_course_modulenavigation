@@ -31,13 +31,26 @@
 
     Context variables required for this template:
     * sections Array of course sections containing arrays of modules
-    * modudules Array of course modules
 
     Example context (json):
     {
-        "attributes": [
-            { "name": "src", "value": "http://moodle.com/wp-content/themes/moodle/images/logo-hat2.png" },
-            { "name": "class", "value": "iconsmall" }
+        "sections": [
+            {
+                "number":1,
+                "title":"Topic 1",
+                "url":{},
+                "selected":false,
+                "collapse":false,
+                "onlytitles":false,
+                "modules":[
+                            {
+                                "name":"Test",
+                                "url":{},
+                                "completeclass":"incomplete"
+                            }
+                        ],
+                "hasmodules":true
+            }
         ]
     }
 }}

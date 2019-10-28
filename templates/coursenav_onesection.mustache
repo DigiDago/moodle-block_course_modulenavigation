@@ -31,14 +31,31 @@
 
     Context variables required for this template:
     * sections Array of course sections containing arrays of modules
-    * modudules Array of course modules
+    * courseurl String contain a simple url
+    * coursename String contain a simple course name
 
     Example context (json):
     {
-        "attributes": [
-            { "name": "src", "value": "http://moodle.com/wp-content/themes/moodle/images/logo-hat2.png" },
-            { "name": "class", "value": "iconsmall" }
-        ]
+        "sections": [
+            {
+                "number":1,
+                "title":"Topic 1",
+                "url":{},
+                "selected":false,
+                "collapse":false,
+                "onlytitles":false,
+                "modules":[
+                            {
+                                "name":"Test",
+                                "url":{},
+                                "completeclass":"incomplete"
+                            }
+                        ],
+                "hasmodules":true
+            }
+        ],
+        "courseurl" : "https://moodle.org",
+        "coursename" : "Toto is a course name"
     }
 }}
 <div class="section-group onesection" id="accordion" role="tablist" aria-multiselectable="false">
