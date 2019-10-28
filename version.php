@@ -18,7 +18,7 @@
  * Course module navigation version.
  * @package    block_course_modulenavigation
  * @copyright  2019 Pimenko <contact@pimenko.com> <pimenko.com>
- * @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | DigiDago
+ * @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | Pimenko
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 defined('MOODLE_INTERNAL') || die();

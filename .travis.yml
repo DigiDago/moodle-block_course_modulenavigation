@@ -1,26 +1,30 @@
+sudo: required
+
 language: php
 
-sudo: false
+dist: xenial
+
+services:
+  - mysql
+
+php:
+  - 7.2
+
+env:
+  global:
+    - MOODLE_BRANCH=master
+    - IGNORE_PATHS=amd/build,amd/src/bootstrap.js
+    - IGNORE_NAMES=*.txt,moodle.css,moodle-rtl.css,moodle_min.css,editor.css,editor_min.css,Gruntfile.js
+    - DB=mysqli
+
+matrix:
+  - php: 7.2
+    env: DB=mysqli   TASK=PHPUNIT
 
 cache:
   directories:
     - $HOME/.composer/cache
-
-php:
- # - 5.4
- # - 5.5
- # - 5.6
- - 7.0
-
-env:
- global:
-  - MOODLE_BRANCH=master
-  - IGNORE_PATHS=amd/build,amd/src/bootstrap.js
-  - IGNORE_NAMES=*.txt,moodle.css,moodle-rtl.css,moodle_min.css,editor.css,editor_min.css
-
- matrix:
-  - DB=pgsql
-  - DB=mysqli
+    - $HOME/.npm
 
 before_install:
   - cd ../..
@@ -38,4 +42,4 @@ script:
   - moodle-plugin-ci codechecker
   - moodle-plugin-ci csslint
   - moodle-plugin-ci jshint
-  - moodle-plugin-ci phpunit
+  #- moodle-plugin-ci phpunit

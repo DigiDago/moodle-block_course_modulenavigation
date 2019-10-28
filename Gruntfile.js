@@ -19,7 +19,7 @@
  *
  * @package    block_course_modulenavigation
  * @copyright  2019 Pimenko <contact@pimenko.com> <pimenko.com>
- * @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | DigiDago
+ * @author     Sylvain Revenu | Nick Papoutsis | Bas Brands | Pimenko
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 "use strict";
@@ -32,11 +32,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-exec");
     grunt.loadNpmTasks("grunt-stylelint");
     // Import modules.
-    let path = require('path');
+    const path = require('path');
     const sass = require('node-sass');
     // PHP strings for exec task.
-    let moodleroot = path.dirname(path.dirname(__dirname)),
-        configfile = '',
+    var moodleroot = path.dirname(path.dirname(__dirname)),
+        configfile,
         decachephp = '',
         dirrootopt = grunt.option('dirroot') || process.env.MOODLE_DIR || '';
 
