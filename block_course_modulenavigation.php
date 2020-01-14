@@ -342,8 +342,10 @@ class block_course_modulenavigation extends block_base {
                             ['context' => $context]
                     );
                     $thismod->url = $module->url;
+                    $thismod->onclick = $module->onclick;
                     if ($module->modname == 'label') {
                         $thismod->url = '';
+                        $thismod->onclick = '';
                         $thismod->label = 'true';
                     }
                     $hascompletion = $completioninfo->is_enabled($module);
