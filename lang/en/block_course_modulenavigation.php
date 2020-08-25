@@ -38,6 +38,9 @@ $string['toggleclickontitle_menu']             = 'Displays the menu';
 $string['toggleclickontitle_page']             = 'Goes to that page';
 $string['toggleshowlabels']                    = 'Show labels';
 $string['toggleshowlabels_desc']               = 'Choose whether to display labels or not';
+$string['toggleshowrestricted']                = 'Show restricted';
+$string['toggleshowrestricted_desc']           = 'Choose whether to display restricted course modules or not';
+
 $string['togglecollapse']                      = 'Collapse tabs';
 $string['togglecollapse_desc']                 = 'Choose whether to display all tabs not collapsed';
 $string['toggletitles']                        = 'Show only titles';

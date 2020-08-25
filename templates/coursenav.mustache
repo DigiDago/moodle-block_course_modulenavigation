@@ -95,7 +95,7 @@
                         {{#modules}}
                             {{^onlytitles}}
                                 <li>
-                                    <a href="{{{url}}}" class="{{active}} {{#label}}modulenavigationlabel{{/label}}" onclick="{{{onclick}}}">
+                                    <a href="{{{url}}}" class="{{active}}{{#label}}modulenavigationlabel{{/label}}{{#disabled}}disabled{{/disabled}}" onclick="{{{onclick}}}">
                                         {{#completionon}}
                                             <div class="completionbox">
                                                 <div class="completioncheck {{completeclass}}">

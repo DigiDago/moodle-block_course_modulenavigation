@@ -324,9 +324,29 @@ class block_course_modulenavigation extends block_base {
                                     ) == 1) && ($module->modname == 'label')) {
                         continue;
                     }
-                    if (!$module->uservisible || !$module->visible || !$module->visibleoncoursepage) {
+
+                    if (!$module->visibleoncoursepage) {
                         continue;
                     }
+
+                    if (!$module->uservisible) {
+                        if (!$module->visible) {
+                            if (!has_capability(
+                                'moodle/course:viewhiddenactivities',
+                                $module->context)) {
+                                continue;
+                            }
+                        }
+
+                        if (!$module->available) {
+                            if (get_config(
+                                'block_course_modulenavigation',
+                                'toggleshowrestricted') == 1 ) {
+                                continue;
+                            }
+                        }
+                    }
+
                     $thismod = new stdClass();
 
                     if ($inactivity) {
@@ -343,6 +363,11 @@ class block_course_modulenavigation extends block_base {
                     );
                     $thismod->url = $module->url;
                     $thismod->onclick = $module->onclick;
+                    if (!$module->available) {
+                        $thismod->url = '';
+                        $thismod->onclick = '';
+                        $thismod->disabled = 'true';
+                    }
                     if ($module->modname == 'label') {
                         $thismod->url = '';
                         $thismod->onclick = '';
