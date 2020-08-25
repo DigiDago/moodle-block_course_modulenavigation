@@ -22,6 +22,9 @@ You can choose if labels are displayed or not in the menu with the option "toggl
 **Expand/open menu**
 You can chose if menu is always open with the option "togglecollapse"
 
+**Restricted activities**
+You can choose if restricted activities are included or not in the block as inactive links. This may be useful if you
+want to give an overview of the full table of contents when using availability restrictions.  
 
 == About activity completion ==
 If activity completion is used in the course, course navigation block display a circle empty or green to show state of completion. 
