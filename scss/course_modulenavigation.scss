@@ -12,17 +12,17 @@ $section-default-color: #ddd;
 
 .block.block_course_modulenavigation {
     .content {
-        white-space: normal;
-        padding: 5px;
         background-color: $section-bg;
+        padding: 5px;
+        white-space: normal;
     }
 
     .pagination,
     .allpagination {
+        display: table;
         margin: 0;
         padding: $section-body-padding;
         width: 100%;
-        display: table;
     }
 
     .pagination .prev,
@@ -43,15 +43,15 @@ $section-default-color: #ddd;
     .allpagination .sectionname,
     .pagination .allsectionames,
     .allpagination .allsectionames {
-        width: 90%;
-        border-radius: $section-border-radius;
         border: 0;
+        border-radius: $section-border-radius;
+        width: 90%;
     }
 
     .pagination .expand-arrow,
     .allpagination .expand-arrow {
-        width: 18px;
         float: right;
+        width: 18px;
     }
 
     .pagination > li,
@@ -61,34 +61,34 @@ $section-default-color: #ddd;
 
     .pagination > li a,
     .allpagination > li a {
-        padding: $section-body-padding;
-        float: none;
-        display: block;
         background-color: transparent;
-        border-radius: $section-border-radius;
         border: 0;
+        border-radius: $section-border-radius;
+        display: block;
+        float: none;
+        padding: $section-body-padding;
     }
 
     ul.activities {
+        list-style: none;
         margin: 0;
         padding: $section-body-padding;
-        list-style: none;
 
         li > a {
-            padding: 5px 10px;
             border-bottom: 1px solid #eee;
             display: block;
+            padding: 5px 10px;
 
             &:hover,
             &.active {
-                text-decoration: none;
                 background-color: #eee;
+                text-decoration: none;
             }
         }
 
         .completionbox {
-            position: relative;
             display: table-cell;
+            position: relative;
             width: 18px;
         }
 
@@ -97,38 +97,38 @@ $section-default-color: #ddd;
         }
 
         .completioncheck {
+            border-radius: 5px;
+            content: '';
+            display: inline-block;
+            height: 10px;
+            margin-top: -5px;
             position: absolute;
             top: 50%;
-            margin-top: -5px;
-            content: '';
             width: 10px;
-            height: 10px;
-            border-radius: 5px;
-            display: inline-block;
 
             &.incomplete {
                 border: 1px solid #ccc;
             }
 
             &.completed {
-                border: 1px solid #5cb85c;
                 background-color: #5cb85c;
+                border: 1px solid #5cb85c;
             }
         }
 
         .modulenavigationlabel {
-            pointer-events: none;
-            cursor: default;
             color: black;
+            cursor: default;
             font-weight: 700;
+            pointer-events: none;
         }
     }
 
     .section {
-        margin-bottom: 20px;
         background-color: $section-bg;
         border: 1px solid transparent;
         border-radius: $section-border-radius;
+        margin-bottom: 20px;
     }
 
     .section-body {
@@ -136,10 +136,10 @@ $section-default-color: #ddd;
     }
 
     .module-navigation-section-heading {
-        padding: $section-padding;
         border-bottom: 1px solid transparent;
-        border-top-right-radius: 0;
         border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        padding: $section-padding;
 
         > .dropdown .dropdown-toggle {
             color: inherit;
@@ -147,11 +147,11 @@ $section-default-color: #ddd;
     }
 
     .tocourse {
-        display: block;
-        padding: $section-padding;
         background-color: $section-content-bg;
         border: 1px solid $section-default-color;
+        display: block;
         margin-bottom: 3px;
+        padding: $section-padding;
 
         &:hover {
             text-decoration: none;
@@ -163,9 +163,9 @@ $section-default-color: #ddd;
     }
 
     .section-title {
-        margin-top: 0;
-        margin-bottom: 0;
         color: inherit;
+        margin-bottom: 0;
+        margin-top: 0;
 
         > {
             a,
@@ -177,11 +177,11 @@ $section-default-color: #ddd;
     }
 
     .section-footer {
-        padding: $section-padding;
         background-color: $section-content-bg;
-        border-top: 1px solid $section-default-color;
-        border-bottom-right-radius: 0;
         border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top: 1px solid $section-default-color;
+        padding: $section-padding;
     }
 
     .section > {
@@ -192,27 +192,27 @@ $section-default-color: #ddd;
 
         .list-group .list-group-item,
         .section-collapse > .list-group .list-group-item {
-            border-width: 1px 0;
             border-radius: $section-border-radius;
+            border-width: 1px 0;
         }
 
         .list-group:first-child .list-group-item:first-child,
         .section-collapse > .list-group:first-child .list-group-item:first-child {
             border-top: 0;
-            border-top-right-radius: 0;
             border-top-left-radius: 0;
+            border-top-right-radius: 0;
         }
 
         .list-group:last-child .list-group-item:last-child,
         .section-collapse > .list-group:last-child .list-group-item:last-child {
             border-bottom: 0;
-            border-bottom-right-radius: 0;
             border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
         }
 
         .module-navigation-section-heading + .section-collapse > .list-group .list-group-item:first-child {
-            border-top-right-radius: 0;
             border-top-left-radius: 0;
+            border-top-right-radius: 0;
         }
     }
 
@@ -225,8 +225,8 @@ $section-default-color: #ddd;
         margin-bottom: 20px;
 
         .section {
-            margin-bottom: 0;
             border-radius: $section-border-radius;
+            margin-bottom: 0;
 
             + .section {
                 margin-top: 5px;
@@ -258,17 +258,17 @@ $section-default-color: #ddd;
 
         > {
             .module-navigation-section-heading {
-                color: #333;
                 background-color: $section-content-bg;
                 border-color: $section-default-color;
+                color: #333;
 
                 + .section-collapse > .section-body {
                     border-top-color: $section-default-color;
                 }
 
                 .badge {
-                    color: $section-content-bg;
                     background-color: #333;
+                    color: $section-content-bg;
                 }
             }
 

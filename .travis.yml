@@ -27,7 +27,8 @@ php:
 # This section sets up the environment variables for the build.
 env:
   global:
-    - MOODLE_BRANCH=MOODLE_310_STABLE
+    - MOODLE_BRANCH=MOODLE_311_STABLE
+    - IGNORE_PATHS=node_modules/
   matrix:
     - DB=pgsql
     - DB=mysqli
