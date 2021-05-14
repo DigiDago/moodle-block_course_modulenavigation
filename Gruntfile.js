@@ -65,7 +65,25 @@ module.exports = function (grunt) {
             }
         },
         stylelint: {
-            all: ['scss/*.scss']
+            scss: {
+                options: {
+                    configFile: '',
+                    formatter: 'string',
+                    ignoreDisables: false,
+                    failOnError: true,
+                    outputFile: '',
+                    reportNeedlessDisables: false,
+                    fix: false,
+                    syntax: 'scss'
+                },
+                src: ['scss/*.scss']
+            },
+            less: {
+                src: ['less/*.less']
+            },
+            css: {
+                src: ['css/*.css']
+            }
         },
         exec: {
             decache: {
