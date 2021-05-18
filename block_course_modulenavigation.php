@@ -247,11 +247,13 @@ class block_course_modulenavigation extends block_base {
         }
         foreach ($sections as $section) {
             $i = $section->section;
-            if (!$section->uservisible || $section->visible == 0) {
+            if (!$section->uservisible || $section->visible == 0 || $section->available == false) {
                 continue;
-            } else if (count($section->modinfo->sections[$i]) == 1
+            } else if ( isset($section->modinfo->sections[$i])
+                && count($section->modinfo->sections[$i]) == 1
                 && ( $section->modinfo->cms[$section->modinfo->sections[$i][0]]->visible == 0 ||
-                    $section->modinfo->cms[$section->modinfo->sections[$i][0]]->visibleoncoursepage == 0)
+                    $section->modinfo->cms[$section->modinfo->sections[$i][0]]->visibleoncoursepage == 0
+                    || $section->modinfo->cms[$section->modinfo->sections[$i][0]]->available == false)
             ) {
                 continue;
             }
@@ -332,7 +334,7 @@ class block_course_modulenavigation extends block_base {
                             ) == 1) && ($module->modname == 'label')) {
                         continue;
                     }
-                    if (!$module->uservisible || !$module->visible || !$module->visibleoncoursepage) {
+                    if (!$module->uservisible || !$module->visible || !$module->visibleoncoursepage || !$module->available) {
                         continue;
                     }
                     $thismod = new stdClass();
@@ -374,7 +376,9 @@ class block_course_modulenavigation extends block_base {
                     $thissection->modules[] = $thismod;
                 }
                 $thissection->hasmodules = (count($thissection->modules) > 0);
-                $template->sections[] = $thissection;
+                if ($thissection->hasmodules) {
+                    $template->sections[] = $thissection;
+                }
             }
             if ($thissection->selected) {
 
