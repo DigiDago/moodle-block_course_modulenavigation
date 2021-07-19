@@ -247,17 +247,18 @@ class block_course_modulenavigation extends block_base {
         }
         foreach ($sections as $section) {
             $i = $section->section;
-            if (!$section->uservisible || $section->visible == 0 || $section->available == false) {
-                continue;
-            } else if ( isset($section->modinfo->sections[$i])
-                && count($section->modinfo->sections[$i]) == 1
-                && ( $section->modinfo->cms[$section->modinfo->sections[$i][0]]->visible == 0 ||
-                    $section->modinfo->cms[$section->modinfo->sections[$i][0]]->visibleoncoursepage == 0
-                    || $section->modinfo->cms[$section->modinfo->sections[$i][0]]->available == false)
-            ) {
-                continue;
+            if (!$section->uservisible) {
+                if ($section->visible == 0 || $section->available == false) {
+                    continue;
+                } else if ( isset($section->modinfo->sections[$i])
+                    && count($section->modinfo->sections[$i]) == 1
+                    && ( $section->modinfo->cms[$section->modinfo->sections[$i][0]]->visible == 0 ||
+                        $section->modinfo->cms[$section->modinfo->sections[$i][0]]->visibleoncoursepage == 0
+                        || $section->modinfo->cms[$section->modinfo->sections[$i][0]]->available == false)
+                ) {
+                    continue;
+                }
             }
-
             if (!empty($section->name)) {
                 $title = format_string(
                     $section->name,
@@ -285,6 +286,7 @@ class block_course_modulenavigation extends block_base {
             }
 
             $thissection = new stdClass();
+            $thissection->uservisible = $section->uservisible;
             $thissection->number = $i;
             $thissection->title = $title;
             $thissection->url = $format->get_view_url($section);
@@ -334,7 +336,15 @@ class block_course_modulenavigation extends block_base {
                             ) == 1) && ($module->modname == 'label')) {
                         continue;
                     }
-                    if (!$module->uservisible || !$module->visible || !$module->visibleoncoursepage || !$module->available) {
+                    if ( $module->deletioninprogress == '1'
+                        || !$module->is_visible_on_course_page()
+                        || !$module->uservisible) {
+                        continue;
+                    }
+                    if ((!$module->visible
+                        || !$module->visibleoncoursepage
+                        || !$module->available)
+                        && !$module->uservisible) {
                         continue;
                     }
                     $thismod = new stdClass();
@@ -376,7 +386,7 @@ class block_course_modulenavigation extends block_base {
                     $thissection->modules[] = $thismod;
                 }
                 $thissection->hasmodules = (count($thissection->modules) > 0);
-                if ($thissection->hasmodules) {
+                if ($thissection->hasmodules && $thissection->uservisible) {
                     $template->sections[] = $thissection;
                 }
             }
