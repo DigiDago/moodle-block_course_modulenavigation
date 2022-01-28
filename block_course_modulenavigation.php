@@ -207,23 +207,32 @@ class block_course_modulenavigation extends block_base {
             }
 
             if ($mysection) {
-                // Look at this later on look like this is dead code.
-                if (($DB->get_records(
-                        'format_digidagotabs_tabs',
-                        [
-                            'courseid' => $course->id,
-                            'sectionid' => $mysection
-                        ]
-                    )) || ($DB->get_records(
-                        'format_horizontaltabs_tabs',
-                        [
-                            'courseid' => $course->id,
-                            'sectionid' => $mysection
-                        ]
-                    ))) {
-                    // This is a module inside a tab of the Dynamic tabs course format.
-                    // Prevent showing of this menu.
-                    return $this->content;
+                $formatcourse = course_get_format($course->id);
+                if ($formatcourse = 'horizontaltabs') {
+                    if (($DB->get_records(
+                            'format_horizontaltabs_tabs',
+                            [
+                                'courseid' => $course->id,
+                                'sectionid' => $mysection
+                            ]
+                        ))) {
+                        // This is a module inside a tab of the Dynamic tabs course format.
+                        // Prevent showing of this menu.
+                        return $this->content;
+                    }
+                }
+                if ($formatcourse = 'digidagotabs') {
+                    if (($DB->get_records(
+                            'format_digidagotabs_tabs',
+                            [
+                                'courseid' => $course->id,
+                                'sectionid' => $mysection
+                            ]
+                        ))) {
+                        // This is a module inside a tab of the Dynamic tabs course format.
+                        // Prevent showing of this menu.
+                        return $this->content;
+                    }
                 }
             }
         }
