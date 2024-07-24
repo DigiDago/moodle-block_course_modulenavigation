@@ -87,6 +87,30 @@ You can easily use .css to customize style of the bloc course module navigation.
 
 
 
-Us
-==
-@copyright 2018 Pimenko http://pimenko.com/
+U
+About Pimenko
+===================
+
+
+Pimenko is a leading company specializing in Moodle development and e-learning solutions. With a team of experienced developers and e-learning experts, we are committed to creating innovative and high-quality plugins that enhance the Moodle experience for educators and learners alike.
+
+## Our Expertise
+
+- Custom Moodle development
+- Moodle plugin creation and maintenance
+- E-learning platform optimization
+- Moodle theme development
+- Learning analytics solutions
+- Audit
+- Course creation (elearning, MOOC)
+
+### Connect with Us
+
+- **Website**: [https://www.pimenko.com](https://www.pimenko.com)
+- **Email**: contact@pimenko.com
+- **GitHub**: [https://github.com/DigiDago](https://github.com/DigiDago)
+- **LinkedIn**: [Pimenko LinkedIn Profile](https://www.linkedin.com/company/pimenko/)
+
+We are passionate about improving e-learning experiences through technology. If you have any questions about our services or need custom Moodle solutions, don't hesitate to reach out!
+
+@copyright Pimenko https://www.pimenko.com
