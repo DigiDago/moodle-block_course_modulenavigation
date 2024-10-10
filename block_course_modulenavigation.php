@@ -23,8 +23,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-use JetBrains\PhpStorm\Pure;
-
 defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->dirroot . '/course/lib.php');
@@ -46,7 +44,7 @@ class block_course_modulenavigation extends block_base {
     public function init() {
         $this->title = get_string(
             'pluginname',
-            'block_course_modulenavigation'
+            'block_course_modulenavigation',
         );
     }
 
@@ -66,7 +64,7 @@ class block_course_modulenavigation extends block_base {
         } else {
             $this->title = get_string(
                 'config_blocktitle_default',
-                'block_course_modulenavigation'
+                'block_course_modulenavigation',
             );
         }
     }
@@ -101,12 +99,12 @@ class block_course_modulenavigation extends block_base {
         $selected = optional_param(
             'section',
             null,
-            PARAM_INT
+            PARAM_INT,
         );
         $intab = optional_param(
             'dtab',
             null,
-            PARAM_TEXT
+            PARAM_TEXT,
         );
 
         $this->content = new stdClass();
@@ -128,7 +126,7 @@ class block_course_modulenavigation extends block_base {
             if (debugging()) {
                 $this->content->text = get_string(
                     'notusingsections',
-                    'block_course_modulenavigation'
+                    'block_course_modulenavigation',
                 );
             }
             return $this->content;
@@ -181,7 +179,7 @@ class block_course_modulenavigation extends block_base {
                                            FROM {course_modules} cm
                                            JOIN {modules} md ON md.id = cm.module
                                            WHERE cm.id = ?",
-                [$thiscontext->instanceid]
+                [ $thiscontext->instanceid ],
             )) {
                 $myactivityid = $cm->id;
             }
@@ -190,17 +188,17 @@ class block_course_modulenavigation extends block_base {
         if ($format instanceof format_digidagotabs || $format instanceof format_horizontaltabs) {
             $coursesections = $DB->get_records(
                 'course_sections',
-                ['course' => $course->id]
+                [ 'course' => $course->id ],
             );
             $mysection = 0;
             foreach ($coursesections as $cs) {
                 $csmodules = explode(
                     ',',
-                    $cs->sequence
+                    $cs->sequence,
                 );
                 if (in_array(
                     $myactivityid,
-                    $csmodules
+                    $csmodules,
                 )) {
                     $mysection = $cs->id;
                 }
@@ -210,12 +208,12 @@ class block_course_modulenavigation extends block_base {
                 $formatcourse = course_get_format($course->id);
                 if ($formatcourse == 'horizontaltabs') {
                     if (($DB->get_records(
-                            'format_horizontaltabs_tabs',
-                            [
-                                'courseid' => $course->id,
-                                'sectionid' => $mysection
-                            ]
-                        ))) {
+                        'format_horizontaltabs_tabs',
+                        [
+                            'courseid' => $course->id,
+                            'sectionid' => $mysection
+                        ],
+                    ))) {
                         // This is a module inside a tab of the Dynamic tabs course format.
                         // Prevent showing of this menu.
                         return $this->content;
@@ -223,12 +221,12 @@ class block_course_modulenavigation extends block_base {
                 }
                 if ($formatcourse == 'digidagotabs') {
                     if (($DB->get_records(
-                            'format_digidagotabs_tabs',
-                            [
-                                'courseid' => $course->id,
-                                'sectionid' => $mysection
-                            ]
-                        ))) {
+                        'format_digidagotabs_tabs',
+                        [
+                            'courseid' => $course->id,
+                            'sectionid' => $mysection
+                        ],
+                    ))) {
                         // This is a module inside a tab of the Dynamic tabs course format.
                         // Prevent showing of this menu.
                         return $this->content;
@@ -247,24 +245,21 @@ class block_course_modulenavigation extends block_base {
 
         $courseurl = new moodle_url(
             '/course/view.php',
-            ['id' => $course->id]
+            [ 'id' => $course->id ],
         );
         $template->courseurl = $courseurl->out();
         $sectionnums = [];
-        foreach ($sections as $section) {
-            $sectionnums[] = $section->section;
-        }
+
         foreach ($sections as $section) {
             $i = $section->section;
+            $sectionnums[] = $section->section;
             if (!$section->uservisible) {
-                if ($section->visible == 0 || $section->available == false) {
+                if ($section->visible == 0 || !$section->available) {
                     continue;
-                } else if ( isset($section->modinfo->sections[$i])
-                    && count($section->modinfo->sections[$i]) == 1
-                    && ( $section->modinfo->cms[$section->modinfo->sections[$i][0]]->visible == 0 ||
-                        $section->modinfo->cms[$section->modinfo->sections[$i][0]]->visibleoncoursepage == 0
-                        || $section->modinfo->cms[$section->modinfo->sections[$i][0]]->available == false)
-                ) {
+                } else if (isset($section->modinfo->sections[$i]) && count($section->modinfo->sections[$i]) == 1 &&
+                    ($section->modinfo->cms[$section->modinfo->sections[$i][0]]->visible == 0 ||
+                        $section->modinfo->cms[$section->modinfo->sections[$i][0]]->visibleoncoursepage == 0 ||
+                        !$section->modinfo->cms[$section->modinfo->sections[$i][0]]->available)) {
                     continue;
                 }
             }
@@ -272,7 +267,7 @@ class block_course_modulenavigation extends block_base {
                 $title = format_string(
                     $section->name,
                     true,
-                    ['context' => $context]
+                    [ 'context' => $context ],
                 );
             } else {
                 $summary = file_rewrite_pluginfile_urls(
@@ -281,7 +276,7 @@ class block_course_modulenavigation extends block_base {
                     $context->id,
                     'course',
                     'section',
-                    $section->id
+                    $section->id,
                 );
                 $summary = format_text(
                     $summary,
@@ -289,7 +284,7 @@ class block_course_modulenavigation extends block_base {
                     [
                         'para' => false,
                         'context' => $context
-                    ]
+                    ],
                 );
                 $title = $format->get_section_name($section);
             }
@@ -299,111 +294,77 @@ class block_course_modulenavigation extends block_base {
             $thissection->number = $i;
             $thissection->title = $title;
             $thissection->url = $format->get_view_url($section);
-            $thissection->selected = false;
 
-            if (get_config(
-                    'block_course_modulenavigation',
-                    'toggleclickontitle'
-                ) == 2) {
-                // Display the menu.
-                $thissection->collapse = true;
-            } else {
-                // Go to link.
-                $thissection->collapse = false;
-            }
+            $toggleclickontitle = get_config(
+                'block_course_modulenavigation',
+                'toggleclickontitle',
+            );
+            $togglecollapse = get_config(
+                'block_course_modulenavigation',
+                'togglecollapse',
+            );
+            $toggletitles = get_config(
+                'block_course_modulenavigation',
+                'toggletitles',
+            );
 
-            if (get_config(
-                    'block_course_modulenavigation',
-                    'togglecollapse'
-                ) == 2) {
-                $thissection->selected = true;
-            }
-
-            // Show only titles.
-            if (get_config(
-                    'block_course_modulenavigation',
-                    'toggletitles'
-                ) == 2) {
-                // Show only titles.
-                $thissection->onlytitles = true;
-            } else {
-                // Show  titles and contents.
-                $thissection->onlytitles = false;
-            }
+            $thissection->collapse = ($toggleclickontitle == 2); // Display the menu if true, else go to link
+            $thissection->selected = ($togglecollapse == 2);
+            $thissection->onlytitles = ($toggletitles == 2); // Show only titles if true, else show titles and contents
 
             if ($i == $selected && !$inactivity) {
                 $thissection->selected = true;
             }
 
             $thissection->modules = [];
+
             if (!empty($modinfo->sections[$i])) {
                 foreach ($modinfo->sections[$i] as $modnumber) {
+
                     $module = $modinfo->cms[$modnumber];
-                    if ((get_config(
-                                'block_course_modulenavigation',
-                                'toggleshowlabels'
-                            ) == 1) && ($module->modname == 'label')) {
-                        continue;
-                    }
-                    if ( $module->deletioninprogress == '1'
-                        || !$module->is_visible_on_course_page()
-                        || !$module->uservisible) {
-                        continue;
-                    }
-                    if ((!$module->visible
-                        || !$module->visibleoncoursepage
-                        || !$module->available)
-                        && !$module->uservisible) {
-                        continue;
-                    }
                     $thismod = new stdClass();
 
-                    if ($inactivity) {
-                        if ($myactivityid == $module->id) {
-                            $thissection->selected = true;
-                            $thismod->active = 'active';
+                    if ($module->modname === 'subsection') {
+                        $thismod->issubsection = true;
+                        $thismod->subsection = $this->handle_subsection($module);
+
+                        foreach ($thismod->subsection->modules as $key => $subsectionmodule) {
+                            $thismod->subsection->modules[$key] = $this->checkmodule(
+                                $subsectionmodule,
+                                $context,
+                                $completioninfo,
+                                $completionok,
+                                $inactivity,
+                                $myactivityid,
+                                $thissection,
+                            );
                         }
-                    }
 
-                    $thismod->name = format_string(
-                        $module->name,
-                        true,
-                        ['context' => $context]
-                    );
-                    $thismod->url = $module->url;
-                    $thismod->onclick = $module->onclick;
-                    if ($module->modname == 'label') {
-                        $thismod->url = '';
-                        $thismod->onclick = '';
-                        $thismod->label = 'true';
+                        $thissection->modules[] = $thismod;
+                    } else {
+                        $thissection->modules[] = $this->checkmodule(
+                            $module,
+                            $context,
+                            $completioninfo,
+                            $completionok,
+                            $inactivity,
+                            $myactivityid,
+                            $thissection,
+                        );
                     }
-                    $hascompletion = $completioninfo->is_enabled($module);
-                    if ($hascompletion) {
-                        $thismod->completeclass = 'incomplete';
-                    }
-
-                    $completiondata = $completioninfo->get_data(
-                        $module,
-                        true
-                    );
-                    if (in_array(
-                        $completiondata->completionstate,
-                        $completionok
-                    )) {
-                        $thismod->completeclass = 'completed';
-                    }
-                    $thissection->modules[] = $thismod;
                 }
+
                 $thissection->hasmodules = (count($thissection->modules) > 0);
                 if ($thissection->hasmodules && $thissection->uservisible) {
                     $template->sections[] = $thissection;
                 }
             }
+
             if ($thissection->selected) {
 
                 $pn = $this->get_prev_next(
                     $sectionnums,
-                    $thissection->number
+                    $thissection->number,
                 );
 
                 $courseurl = new moodle_url(
@@ -411,7 +372,7 @@ class block_course_modulenavigation extends block_base {
                     [
                         'id' => $course->id,
                         'section' => $i
-                    ]
+                    ],
                 );
                 $template->courseurl = $courseurl->out();
 
@@ -427,7 +388,7 @@ class block_course_modulenavigation extends block_base {
                     [
                         'id' => $course->id,
                         'section' => $pn->prev
-                    ]
+                    ],
                 );
                 $template->prevurl = $prevurl->out(false);
 
@@ -436,7 +397,7 @@ class block_course_modulenavigation extends block_base {
                     [
                         'id' => $course->id,
                         'section' => $thissection->number
-                    ]
+                    ],
                 );
                 $template->currurl = $currurl->out(false);
 
@@ -445,19 +406,21 @@ class block_course_modulenavigation extends block_base {
                     [
                         'id' => $course->id,
                         'section' => $pn->next
-                    ]
+                    ],
                 );
                 $template->nexturl = $nexturl->out(false);
             }
         }
+
         if ($intab) {
             $template->inactivity = true;
         }
+
         $template->coursename = $course->fullname;
         $template->config = $this->config;
         $renderer = $this->page->get_renderer(
             'block_course_modulenavigation',
-            'nav'
+            'nav',
         );
         $this->content->text = $renderer->render_nav($template);
         return $this->content;
@@ -487,5 +450,117 @@ class block_course_modulenavigation extends block_base {
             }
         }
         return $pn;
+    }
+
+    /**
+     * Handle subsection for a given module.
+     *
+     * @param object $module The module object for which the subsection is being handled.
+     *
+     * @return stdClass Returns a stdClass object representing the subsection with the following properties:
+     *  - title: The title of the subsection.
+     *  - uservisible: Visibility status of the subsection.
+     *  - number: A unique identifier for the subsection.
+     *  - url: The URL to view the subsection.
+     *  - modules: An array containing modules*/
+    public function handle_subsection($module) {
+
+        $format = course_get_format($this->page->course);
+        $sectionid = $module->get_custom_data()['sectionid'];
+        $sectionnum = get_fast_modinfo($this->page->course->id)->get_section_info_by_id($sectionid);
+        $sectionmods = $sectionnum->get_sequence_cm_infos();
+
+        $subsection = new stdClass();
+        $subsection->title = $sectionnum->name;
+        $subsection->uservisible = $sectionnum->uservisible;
+        $subsection->number = 'sub_' . $sectionnum->id;
+        $subsection->url = $format->get_view_url($sectionnum);
+
+        $subsection->modules = [];
+        foreach ($sectionmods as $mod) {
+            $this->add_to_list(
+                $subsection->modules,
+                $mod,
+            );
+        }
+
+        return $subsection;
+    }
+
+    /**
+     * Adds a module to the list of modules and activities.
+     *
+     * @param array $mods The list of modules.
+     * @param object $module The module to be added.
+     * @return void
+     */
+    private function add_to_list(&$mods, $module) {
+        if (!$module->uservisible || $module->is_stealth() || empty($module->url)) {
+            return;
+        }
+
+        $mods[] = $module;
+    }
+
+    /**
+     * Check the module for various conditions and return an object with relevant information
+     *
+     * @param object $module The module object to be checked
+     * @param string $context The context of the module
+     * @param object $completioninfo Object containing completion information
+     * @param array $completionok Array of completion states considered as completed
+     * @param bool $inactivity Flag indicating if inactivity is present
+     * @param int $myactivityid The ID of the current activity
+     * @param object $thissection The current section object
+     *
+     * @return stdClass|null Returns an object with module information or null if module does not meet criteria
+     */
+    private function checkmodule($module, $context, $completioninfo, $completionok, $inactivity, $myactivityid, $thissection) {
+        $thismod = new stdClass();
+
+        if ((get_config(
+                    'block_course_modulenavigation',
+                    'toggleshowlabels',
+                ) == 1) && ($module->modname == 'label')) {
+            return null;
+        }
+        if ($module->deletioninprogress == '1' || !$module->is_visible_on_course_page() || !$module->uservisible) {
+            return null;
+        }
+        if ((!$module->visible || !$module->visibleoncoursepage || !$module->available) && !$module->uservisible) {
+            return null;
+        }
+        if ($inactivity && $myactivityid == $module->id) {
+            $thissection->selected = true;
+            $thismod->active = 'active';
+        }
+        $thismod->name = format_string(
+            $module->name,
+            true,
+            [ 'context' => $context ],
+        );
+        $thismod->url = $module->url;
+        $thismod->onclick = $module->onclick;
+        if ($module->modname == 'label') {
+            $thismod->url = '';
+            $thismod->onclick = '';
+            $thismod->label = 'true';
+        }
+        $hascompletion = $completioninfo->is_enabled($module);
+        if ($hascompletion) {
+            $thismod->completeclass = 'incomplete';
+        }
+        $completiondata = $completioninfo->get_data(
+            $module,
+            true,
+        );
+        if (in_array(
+            $completiondata->completionstate,
+            $completionok,
+        )) {
+            $thismod->completeclass = 'completed';
+        }
+
+        return $thismod;
     }
 }

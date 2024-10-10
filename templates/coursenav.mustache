@@ -93,21 +93,26 @@
                 <div class="section-body">
                     <ul class="activities">
                         {{#modules}}
-                            {{^onlytitles}}
-                                <li>
-                                    <a href="{{{url}}}" class="{{active}} {{#label}}modulenavigationlabel{{/label}}" onclick="{{{onclick}}}">
-                                        {{#completionon}}
-                                            <div class="completionbox">
-                                                <div class="completioncheck {{completeclass}}">
+                            {{^issubsection}}
+                                {{^onlytitles}}
+                                    <li>
+                                        <a href="{{{url}}}" class="{{active}} {{#label}}modulenavigationlabel{{/label}}" onclick="{{{onclick}}}">
+                                            {{#completionon}}
+                                                <div class="completionbox">
+                                                    <div class="completioncheck {{completeclass}}">
+                                                    </div>
                                                 </div>
+                                            {{/completionon}}
+                                            <div class="activityname">
+                                                {{{name}}}
                                             </div>
-                                        {{/completionon}}
-                                        <div class="activityname">
-                                            {{{name}}}
-                                        </div>
-                                    </a>
-                                </li>
-                            {{/onlytitles}}
+                                        </a>
+                                    </li>
+                                {{/onlytitles}}
+                            {{/issubsection}}
+                            {{#issubsection}}
+                                {{> block_course_modulenavigation/subsection }}
+                            {{/issubsection}}
                         {{/modules}}
                     </ul>
                 </div>
