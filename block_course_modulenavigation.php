@@ -77,7 +77,7 @@ class block_course_modulenavigation extends block_base {
     public function applicable_formats() {
         return [
             'site-index' => true,
-            'course-view-*' => true
+            'course-view-*' => true,
         ];
     }
 
@@ -132,18 +132,7 @@ class block_course_modulenavigation extends block_base {
             return $this->content;
         }
 
-        if (($format instanceof format_digidagotabs) || ($format instanceof format_horizontaltabs)) {
-            // Don't show the menu in a tab.
-            if ($intab) {
-                return $this->content;
-            }
-            // Only show the block inside activities of courses.
-            if ($this->page->pagelayout == 'incourse') {
-                $sections = $format->tabs_get_sections();
-            }
-        } else {
-            $sections = $format->get_sections();
-        }
+        $sections = $format->get_sections();
 
         if (empty($sections)) {
             return $this->content;
@@ -163,7 +152,7 @@ class block_course_modulenavigation extends block_base {
 
         $completionok = [
             COMPLETION_COMPLETE,
-            COMPLETION_COMPLETE_PASS
+            COMPLETION_COMPLETE_PASS,
         ];
 
         $thiscontext = context::instance_by_id($this->page->context->id);
@@ -182,56 +171,6 @@ class block_course_modulenavigation extends block_base {
                 [ $thiscontext->instanceid ],
             )) {
                 $myactivityid = $cm->id;
-            }
-        }
-
-        if ($format instanceof format_digidagotabs || $format instanceof format_horizontaltabs) {
-            $coursesections = $DB->get_records(
-                'course_sections',
-                [ 'course' => $course->id ],
-            );
-            $mysection = 0;
-            foreach ($coursesections as $cs) {
-                $csmodules = explode(
-                    ',',
-                    $cs->sequence,
-                );
-                if (in_array(
-                    $myactivityid,
-                    $csmodules,
-                )) {
-                    $mysection = $cs->id;
-                }
-            }
-
-            if ($mysection) {
-                $formatcourse = course_get_format($course->id);
-                if ($formatcourse == 'horizontaltabs') {
-                    if (($DB->get_records(
-                        'format_horizontaltabs_tabs',
-                        [
-                            'courseid' => $course->id,
-                            'sectionid' => $mysection
-                        ],
-                    ))) {
-                        // This is a module inside a tab of the Dynamic tabs course format.
-                        // Prevent showing of this menu.
-                        return $this->content;
-                    }
-                }
-                if ($formatcourse == 'digidagotabs') {
-                    if (($DB->get_records(
-                        'format_digidagotabs_tabs',
-                        [
-                            'courseid' => $course->id,
-                            'sectionid' => $mysection
-                        ],
-                    ))) {
-                        // This is a module inside a tab of the Dynamic tabs course format.
-                        // Prevent showing of this menu.
-                        return $this->content;
-                    }
-                }
             }
         }
 
@@ -283,7 +222,7 @@ class block_course_modulenavigation extends block_base {
                     $section->summaryformat,
                     [
                         'para' => false,
-                        'context' => $context
+                        'context' => $context,
                     ],
                 );
                 $title = $format->get_section_name($section);
@@ -308,9 +247,9 @@ class block_course_modulenavigation extends block_base {
                 'toggletitles',
             );
 
-            $thissection->collapse = ($toggleclickontitle == 2); // Display the menu if true, else go to link
+            $thissection->collapse = ($toggleclickontitle == 2); // Display the menu if true, else go to link.
             $thissection->selected = ($togglecollapse == 2);
-            $thissection->onlytitles = ($toggletitles == 2); // Show only titles if true, else show titles and contents
+            $thissection->onlytitles = ($toggletitles == 2); // Show only titles if true, else show titles and contents.
 
             if ($i == $selected && !$inactivity) {
                 $thissection->selected = true;
@@ -339,7 +278,6 @@ class block_course_modulenavigation extends block_base {
                                 $thissection,
                             );
                         }
-
                         $thissection->modules[] = $thismod;
                     } else {
                         $thissection->modules[] = $this->checkmodule(
@@ -355,7 +293,8 @@ class block_course_modulenavigation extends block_base {
                 }
 
                 $thissection->hasmodules = (count($thissection->modules) > 0);
-                if ($thissection->hasmodules && $thissection->uservisible) {
+                // We prevent case of section (mod_subsection) are added at the end ...
+                if ($thissection->hasmodules && $thissection->uservisible && $section->component !== "mod_subsection") {
                     $template->sections[] = $thissection;
                 }
             }
@@ -371,7 +310,7 @@ class block_course_modulenavigation extends block_base {
                     '/course/view.php',
                     [
                         'id' => $course->id,
-                        'section' => $i
+                        'section' => $i,
                     ],
                 );
                 $template->courseurl = $courseurl->out();
@@ -387,7 +326,7 @@ class block_course_modulenavigation extends block_base {
                     '/course/view.php',
                     [
                         'id' => $course->id,
-                        'section' => $pn->prev
+                        'section' => $pn->prev,
                     ],
                 );
                 $template->prevurl = $prevurl->out(false);
@@ -396,7 +335,7 @@ class block_course_modulenavigation extends block_base {
                     '/course/view.php',
                     [
                         'id' => $course->id,
-                        'section' => $thissection->number
+                        'section' => $thissection->number,
                     ],
                 );
                 $template->currurl = $currurl->out(false);
@@ -405,7 +344,7 @@ class block_course_modulenavigation extends block_base {
                     '/course/view.php',
                     [
                         'id' => $course->id,
-                        'section' => $pn->next
+                        'section' => $pn->next,
                     ],
                 );
                 $template->nexturl = $nexturl->out(false);

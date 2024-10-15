@@ -34,12 +34,11 @@
 class block_course_modulenavigation_nav_renderer extends plugin_renderer_base {
 
     /**
+     * Renders navigation based on the provided template configuration.
      *
-     * Render HTML template.
+     * @param object $template The template object containing configuration settings.
      *
-     * @param $template
-     * @return bool|string
-     * @throws moodle_exception
+     * @return string Rendered navigation content based on the template configuration.
      */
     public function render_nav($template) {
         if (isset($template->config->onesection) && ($template->config->onesection == 1)) {
