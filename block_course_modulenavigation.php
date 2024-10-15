@@ -268,7 +268,7 @@ class block_course_modulenavigation extends block_base {
                         $thismod->subsection = $this->handle_subsection($module);
 
                         foreach ($thismod->subsection->modules as $key => $subsectionmodule) {
-                            $thismod->subsection->modules[$key] = $this->checkmodule(
+                            $modulechecked = $this->checkmodule(
                                 $subsectionmodule,
                                 $context,
                                 $completioninfo,
@@ -277,8 +277,14 @@ class block_course_modulenavigation extends block_base {
                                 $myactivityid,
                                 $thissection,
                             );
+                            if($modulechecked !== null) {
+                                $thismod->subsection->modules[$key] = $modulechecked;
+                            }
                         }
-                        $thissection->modules[] = $thismod;
+
+                        if($thismod->subsection !== null && !empty($thismod->subsection->modules)) {
+                            $thissection->modules[] = $thismod;
+                        }
                     } else {
                         $modulechecked = $this->checkmodule(
                             $module,
@@ -298,7 +304,9 @@ class block_course_modulenavigation extends block_base {
 
                 $thissection->hasmodules = (count($thissection->modules) > 0);
                 // We prevent case of section (mod_subsection) are added at the end ...
-                if ($thissection->hasmodules && $thissection->uservisible && $section->component !== "mod_subsection") {
+                if ($thissection->hasmodules
+                    && $thissection->uservisible
+                    && $section->component !== "mod_subsection") {
                     $template->sections[] = $thissection;
                 }
             }
@@ -427,7 +435,11 @@ class block_course_modulenavigation extends block_base {
             );
         }
 
-        return $subsection;
+        if ($subsection->uservisible) {
+            return $subsection;
+        } else {
+            return null;
+        }
     }
 
     /**
