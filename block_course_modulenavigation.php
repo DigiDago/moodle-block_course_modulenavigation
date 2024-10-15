@@ -280,7 +280,7 @@ class block_course_modulenavigation extends block_base {
                         }
                         $thissection->modules[] = $thismod;
                     } else {
-                        $thissection->modules[] = $this->checkmodule(
+                        $modulechecked = $this->checkmodule(
                             $module,
                             $context,
                             $completioninfo,
@@ -289,6 +289,10 @@ class block_course_modulenavigation extends block_base {
                             $myactivityid,
                             $thissection,
                         );
+
+                        if($modulechecked !== null) {
+                            $thissection->modules[] = $modulechecked;
+                        }
                     }
                 }
 
