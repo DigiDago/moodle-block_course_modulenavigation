@@ -71,7 +71,7 @@ if ($ADMIN->fulltree) {
     $choices     = [
         1 => new lang_string('no'),
         // No.
-        2 => new lang_string('yes')
+        2 => new lang_string('yes'),
         // Yes.
     ];
     $settings->add(
@@ -98,7 +98,7 @@ if ($ADMIN->fulltree) {
     $choices     = [
         1 => new lang_string('no'),
         // No.
-        2 => new lang_string('yes')
+        2 => new lang_string('yes'),
         // Yes.
     ];
     $settings->add(
@@ -125,7 +125,7 @@ if ($ADMIN->fulltree) {
     $choices     = [
         1 => new lang_string('no'),
         // No.
-        2 => new lang_string('yes')
+        2 => new lang_string('yes'),
         // Yes.
     ];
     $settings->add(
