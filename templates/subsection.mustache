@@ -1,7 +1,7 @@
 {{#subsection}}
-    <div class="section section-default m-1">
+    <div class="accordion-item m-1">
         <!-- En-tête de la section -->
-        <h3 class="accordion-header" role="tab" id="heading{{number}}">
+        <h3 class="accordion-header" id="heading{{number}}">
             <button class="accordion-button {{^selected}}collapsed{{/selected}}" type="button"
                     data-bs-toggle="collapse" data-bs-target="#collapse{{number}}" aria-expanded="{{selected}}"
                     aria-controls="collapse{{number}}">
@@ -10,16 +10,15 @@
         </h3>
         <!-- Contenu de la section -->
         <div id="collapse{{number}}"
-             class="section-collapse accordion-collapse collapse {{#selected}}show{{/selected}}"
-             role="tabpanel"
+             class="accordion-collapse collapse {{#selected}}show{{/selected}}"
              aria-labelledby="heading{{number}}">
-            <div class="section-body">
-                <ul class="activities list-group">
+            <div class="accordion-body p-0">
+                <ul class="activities">
                     {{#modules}}
                         {{^onlytitles}}
-                            <li>
-                                <a href="{{{url}}}" class="{{active}} {{#label}}modulenavigationlabel{{/label}}"
-                                   {{#onclick}}onclick="{{onclick}}"{{/onclick}}>
+                            <li class="module {{completeclass}}">
+                                <!-- Nom du module avec completionon -->
+                                <a href="{{{url}}}" {{#onclick}}onclick="{{onclick}}"{{/onclick}} class="p-2 {{active}} {{#label}}modulenavigationlabel{{/label}}">
                                     {{#completionon}}
                                         <div class="completionbox">
                                             <div class="completioncheck {{completeclass}}">
