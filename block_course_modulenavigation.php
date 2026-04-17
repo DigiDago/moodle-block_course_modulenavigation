@@ -90,7 +90,7 @@ class block_course_modulenavigation extends block_base {
      * @throws moodle_exception
      */
     public function get_content() {
-        global $DB;
+        global $DB, $CFG;
 
         if (!is_null($this->content)) {
             return $this->content;
@@ -189,8 +189,15 @@ class block_course_modulenavigation extends block_base {
         $template->courseurl = $courseurl->out();
         $sectionnums = [];
 
+        $onesection = isset($this->config->onesection) && $this->config->onesection == 1;
+
         foreach ($sections as $section) {
             $i = $section->section;
+
+            if ($onesection && $i != $selected && !$inactivity) {
+                // If we're not in an activity and we want only one section, we skip other sections.
+            }
+
             $sectionnums[] = $section->section;
             if (!$section->uservisible) {
                 if ($section->visible == 0 || !$section->available) {

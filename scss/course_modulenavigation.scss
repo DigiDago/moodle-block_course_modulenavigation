@@ -29,7 +29,7 @@ $section-default-color: #ddd;
     .allpagination .prev,
     .pagination .next,
     .allpagination .next {
-        width: 10%;
+        flex: 0 0 auto;
     }
 
     .pagination .prev a,
@@ -45,7 +45,7 @@ $section-default-color: #ddd;
     .allpagination .allsectionames {
         border: 0;
         border-radius: $section-border-radius;
-        width: 90%;
+        flex: 1 1 auto;
     }
 
     .pagination .expand-arrow,
