@@ -58,54 +58,65 @@
         "coursename" : "Toto is a course name"
     }
 }}
-<div class="section-group onesection" id="accordion" role="tablist" aria-multiselectable="false">
+<div class="accordion onesection" id="accordion">
     <div class="backtocourse">
         <a href="{{{courseurl}}}" class="tocourse">{{coursename}}</a>
     </div>
     {{#sections}}
         {{#selected}}
-            <div class="section section-default">
-                <div class="module-navigation-section-heading" role="tab" id="heading{{number}}">
-                    <div class="section-title">
-                        <ul class="pagination">
+            <div class="accordion-item">
+                <!-- Titre de la section -->
+                <h2 class="accordion-header" id="heading{{number}}">
+                    <div class="accordion-button d-flex align-items-center justify-content-between p-0">
+                        <ul class="pagination mb-0 w-100">
                             {{#hasprev}}
                                 <li class="prev {{prevclass}}">
-                                    <a href="{{prevurl}}" aria-label="Previous">
+                                    <a href="{{prevurl}}" aria-label="Previous" class="p-2">
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
                                 </li>
                             {{/hasprev}}
-                        <li class="sectionname">
-                            <a href="{{currurl}}" aria-lable="Current">
-                                {{title}}
-                            </a>
+                            <li class="sectionname flex-grow-1 text-center">
+                                <a href="{{currurl}}" aria-label="Current" class="p-2 d-block w-100">
+                                    {{{title}}}
+                                </a>
+                            </li>
                             {{#hasnext}}
                                 <li class="next {{nextclass}}">
-                                    <a href="{{nexturl}}" aria-label="Next">
+                                    <a href="{{nexturl}}" aria-label="Next" class="p-2">
                                         <span aria-hidden="true">&raquo;</span>
                                     </a>
                                 </li>
                             {{/hasnext}}
                         </ul>
                     </div>
-                </div>
-                <div id="collapse" class="section-collapse" aria-labelledby="heading">
-                    <div class="section-body">
-                        <ul class="activities list-group">
+                </h2>
+                <div id="collapse{{number}}" class="accordion-collapse collapse show"
+                     aria-labelledby="heading{{number}}" data-bs-parent="#accordion">
+                    <div class="accordion-body p-0">
+                        <ul class="activities">
                             {{#modules}}
-                                <li>
-                                    <a href="{{{url}}}" class="{{active}}">
-                                        {{#completionon}}
-                                            <div class="completionbox">
-                                                <div class="completioncheck {{completeclass}}">
+                                {{^issubsection}}
+                                    {{^onlytitles}}
+                                        <li class="module {{completeclass}}">
+                                            <!-- Nom du module avec completionon -->
+                                            <a href="{{{url}}}" {{#onclick}}onclick="{{onclick}}"{{/onclick}} class="p-2 {{active}} {{#label}}modulenavigationlabel{{/label}}">
+                                                {{#completionon}}
+                                                    <div class="completionbox">
+                                                        <div class="completioncheck {{completeclass}}">
+                                                        </div>
+                                                    </div>
+                                                {{/completionon}}
+                                                <div class="activityname">
+                                                    {{{name}}}
                                                 </div>
-                                            </div>
-                                        {{/completionon}}
-                                        <div class="activityname">
-                                            {{{name}}}
-                                        </div>
-                                    </a>
-                                </li>
+                                            </a>
+                                        </li>
+                                    {{/onlytitles}}
+                                {{/issubsection}}
+                                {{#issubsection}}
+                                    {{> block_course_modulenavigation/subsection }}
+                                {{/issubsection}}
                             {{/modules}}
                         </ul>
                     </div>
